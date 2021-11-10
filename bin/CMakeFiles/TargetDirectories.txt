@@ -1,3 +1,0 @@
-/Users/nan/Desktop/projects/ece496/ECE496_texas_holdem_AI/bin/CMakeFiles/rebuild_cache.dir
-/Users/nan/Desktop/projects/ece496/ECE496_texas_holdem_AI/bin/CMakeFiles/edit_cache.dir
-/Users/nan/Desktop/projects/ece496/ECE496_texas_holdem_AI/bin/CMakeFiles/main.dir
