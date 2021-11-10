@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.21.2)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_COMPILER "/usr/bin/g++")
+set(CMAKE_CXX_COMPILER_ID "g++")
+set(CMAKE_CXX_COMPILER_VERSION "11.2.0")
 
 project(main VERSION 1.0)
 add_executable(main main.cpp game.cpp player.cpp RPSTrainer.cpp)
