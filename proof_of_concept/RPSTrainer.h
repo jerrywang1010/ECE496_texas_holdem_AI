@@ -7,16 +7,9 @@
 #include <ctime>
 #include <algorithm>
 #include <iterator>
-#include "game.h"
 #include "utils.h"
 
-
-const static std::vector<double> opp_strategy {0.4, 0.3, 0.3};
 const static int NUM_ACTIONS = 3;
-// row is other action, colomn is my action
-const static std::vector<std::vector<int> > utility_table = { {0, 1, -1},
-                                                              {-1, 0, 1},
-                                                              {1, -1, 0} }; 
 
 class RPSTrainer
 {
@@ -25,6 +18,7 @@ private:
     std::vector<int> regret_sum;
     std::vector<double> strategy;
     std::vector<double> strategy_sum;
+    bool use_fixed_strategy;
 
 public:
     /**
@@ -37,28 +31,45 @@ public:
     RPSTrainer() 
         : regret_sum(NUM_ACTIONS, 0), 
           strategy(NUM_ACTIONS, 0), 
-          strategy_sum(NUM_ACTIONS, 0)
+          strategy_sum(NUM_ACTIONS, 0),
+		  use_fixed_strategy(false)
+    {
+        srand (static_cast <unsigned> (time(0)));
+    }
+
+    /**
+     * Constructor for RPSTrainer
+     *
+     * @param use_fixed_strategy
+     * @return None
+     * 
+     */
+    RPSTrainer(std::vector<double> strategy, bool use_fixed_strategy=true)
+        : regret_sum(NUM_ACTIONS, 0), 
+          strategy(strategy), 
+          strategy_sum(NUM_ACTIONS, 0),
+          use_fixed_strategy(use_fixed_strategy)
     {
         srand (static_cast <unsigned> (time(0)));
     }
 
     std::vector<double> get_strategy ();
 
-    moves get_move(const std::vector<double> & strategy) const;
+    moves get_move ();
 
     void update_regret (moves my_move, moves opp_move);
 
-    std::vector<double> get_avg_strategy ();
+    std::vector<double> get_avg_strategy () const;
 
-    std::vector<double> train (int iteration);
+    void train_iter (moves my_move, moves opp_move);
 
-    // /**
-    //  * Display the final strategy
-    //  *
-    //  * @param final_strategy to be printed
-    //  * @return void
-    //  * 
-    //  */
+    /**
+     * Display the final strategy
+     *
+     * @param final_strategy to be printed
+     * @return void
+     * 
+     */
     template <typename T>
     void display_strategy (const std::vector<T> & final_strategy) const
     {

@@ -11,18 +11,13 @@
 
 #include <iostream>
 #include "game.h"
-#include "utils.h"
-#include "art.h"
-#include "RPSTrainer.h"
 
 
 int main()
 {
-    // Game game (2);
-    // game.play();
-    RPSTrainer trainer;
-    std::vector<double> final_strategy = trainer.train(10000);
-    trainer.display_strategy(final_strategy);
+	Game game(GAME_MODE::FIXED_OPP_STRAT, {0.2, 0.4, 0.4}, 1000);
+	game.play();
+    game.display_player_strategies();
     return 0;
 }
 

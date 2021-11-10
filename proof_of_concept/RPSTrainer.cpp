@@ -9,6 +9,8 @@
  */
 std::vector<double> RPSTrainer::get_strategy ()
 {
+    if (use_fixed_strategy) return strategy;
+
     double normalizing_sum = 0;
     for (int a = 0; a < NUM_ACTIONS; a ++)
     {
@@ -40,8 +42,10 @@ std::vector<double> RPSTrainer::get_strategy ()
  * @return moves
  * 
  */
-moves RPSTrainer::get_move(const std::vector<double> & strategy) const
+moves RPSTrainer::get_move()
 {
+    std::vector<double> strategy = get_strategy();
+
     // get a random float between [0, 1)
     float r = static_cast<float> (rand()) / static_cast<float> (RAND_MAX);
 
@@ -95,8 +99,10 @@ void RPSTrainer::update_regret (moves my_move, moves opp_move)
  * @return vector<double> as probablity distribution of next move
  * 
  */
-std::vector<double> RPSTrainer::get_avg_strategy ()
-{
+std::vector<double> RPSTrainer::get_avg_strategy () const
+{   
+    if (this->use_fixed_strategy) return this->strategy;
+    
     std::vector<double> avg_strategy (NUM_ACTIONS, 0);
     double normalizing_sum = 0;
     for (int a = 0; a < NUM_ACTIONS; a ++)
@@ -119,22 +125,38 @@ std::vector<double> RPSTrainer::get_avg_strategy ()
 
 
 /**
+ * Train for one iteration, update regret
+ *
+ * @param my_move
+ * @param opponents_move
+ * @return void
+ * 
+ */
+void RPSTrainer::train_iter (moves my_move, moves opp_move)
+{   
+    if (!use_fixed_strategy)
+    {
+        update_regret(my_move, opp_move);
+    }
+}
+
+
+/**
  * Train for a number of iteration and return the final avg strategy
  *
  * @param num_iteration
  * @return vector<double> as probablity distribution of the final optimal strategy
  * 
  */
-std::vector<double> RPSTrainer::train (int iteration)
-{
-    for (int i = 0; i < iteration; i ++)
-    {
-        std::vector<double> my_strategy = get_strategy();
-        moves my_move = get_move(my_strategy);
-        moves opp_move = get_move(opp_strategy);
+// std::vector<double> RPSTrainer::train (int iteration)
+// {
+//     for (int i = 0; i < iteration; i ++)
+//     {
+//         std::vector<double> my_strategy = get_strategy();
+//         moves my_move = get_move();
         
-        // calculate utility and regret also update regret_sum
-        update_regret(my_move, opp_move);
-    }
-    return get_avg_strategy();
-}
+//         // calculate utility and regret also update regret_sum
+//         update_regret(my_move, opp_move);
+//     }
+//     return get_avg_strategy();
+// }
