@@ -21,8 +21,22 @@ void Player::update_balanace(int money)
  */
 void Player::add_to_hand(Hand h)
 {
+    assert(h.size() == 2);
     this->m_hand.insert(m_hand.end(), h.begin(), h.end());
 }
+
+/**
+ * The function adds a hand to the players usable cards
+ *
+ * @param  hand
+ * @return void 
+ */
+void Player::add_to_usable_cards(Hand h)
+{
+    assert(h.size() <= 3);
+    this->m_usable_cards.insert(m_usable_cards.end(), h.begin(), h.end());
+}
+
 
 /**
  * The function clears the hand of a player
@@ -34,6 +48,18 @@ void Player::clear_hand()
 {
     this->m_hand.clear();
 }
+
+/**
+ * The functions clears the player's usable cards, usually happends at the end of a game.
+ *
+ * @param  hand
+ * @return void 
+ */
+void Player::clear_usable_cards()
+{
+    this->m_usable_cards.clear();
+}
+
 
 /**
  * The function sets balance of a player
@@ -49,9 +75,9 @@ void Player::set_balance(int balance)
 }
 
 /**
- * The function gets an action from a player, currently prompt the user to input an action
+ * The function gets an action from a player, prompt the user to input an action and check if it is valid. Returns a legal action
  *
- * @param  void
+ * @param  check_allowed
  * @return Action 
  */
 Action Player::get_action(bool allow_check) const
@@ -59,8 +85,15 @@ Action Player::get_action(bool allow_check) const
     char _a;
     Action action = Action::INVALID;
     do
-    {
-        std::cout << "Player: " << player_name << "\n\tPlease enter F (Fold), C (Check) or B (Bet)\n";
+    {   
+        if (allow_check)
+        {
+            std::cout << "Player: " << player_name << "\n\tPlease enter F (Fold), C (Check) or B (Bet)\n";
+        }
+        else
+        {
+            std::cout << "Player: " << player_name << "\n\tPlease enter F (Fold) or B (Bet)\n";
+        }
         try
         {
             std::cin >> _a;
@@ -103,25 +136,46 @@ Hand Player::get_hand() const
 }
 
 
+Hand Player::get_usable_cards() const
+{
+    return m_usable_cards;
+}
+
+
 int Player::get_balance() const
 {
     return m_balance;
 }
 
-
-// add round action history to game action history
+/**
+ * The functions record all the history action of a player by copying the round action.
+ *
+ * @param  none
+ * @return void 
+ */
 void Player::update_his_action()
 {
     m_his_action.insert(m_his_action.end(), m_round_action.begin(), m_round_action.end());
 }
 
+/**
+ * The functions record the action of a player in the current round
+ * will be cleared when entering the next round
+ *
+ * @param  Action
+ * @return void 
+ */
 void Player::update_round_action(Action a)
 {
-    // std::cout << "update round action:" << static_cast<uint16_t>(a) << std::endl;
     m_round_action.push_back(a);
 }
 
-
+/**
+ * The functions returns the last action of a player in the current round or INVALID if the player hasn't played this round
+ *
+ * @param  none
+ * @return void 
+ */
 Action Player::get_last_action_in_round() const
 {
     if (m_round_action.size() == 0)
@@ -132,27 +186,28 @@ Action Player::get_last_action_in_round() const
     return m_round_action.back();
 }
 
-
-void print_card(Card card)
-{
-    unsigned rank = card / 4 + 2;
-    if (rank > 13) 
-    {
-        rank -= 13;
-    }
-    std::string suit = suits.at(card % 4);
-    
-    std::cout << "rank=" << rank << " ,suit=" << suit << std::endl;
-}
-
-
+/**
+ * The functions sorts the hand and display the cards in a more readable form
+ *
+ * @param  none
+ * @return void 
+ */
 void Player::display_hand()
 {
     // first sort the hand
     std::sort(m_hand.begin(), m_hand.end());
+    std::cout << "------------------------------------------------\n";
     std::cout << this->player_name << " hand:\n";
-    for (Card card : m_hand)
-    {
-        print_card(card);
-    }
+    UTILS::display_hand(m_hand);
+    std::cout << "\n";
 }
+
+void Player::display_usable_cards()
+{
+    std::sort(m_usable_cards.begin(), m_usable_cards.end());
+    std::cout << "------------------------------------------------\n";
+    std::cout << this->player_name << " usable cards\n";
+    UTILS::display_hand(m_usable_cards);
+    std::cout << "\n";
+}
+
