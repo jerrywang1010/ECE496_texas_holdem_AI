@@ -29,11 +29,21 @@ public:
 
     void clear_player_hand();
 
+    void clear_player_usable_cards();
+
+    void display_community_cards();
+
+    void add_to_community_cards(Hand h);
+
+    void clear_community_cards();
+
     void print_round_action() const;
 
     uint16_t get_hand_ranking(Hand hand) const;
 
     void shuffle_and_deal();
+
+    void display_round_result() const;
 
 private:
     Game_state* m_state;
@@ -53,7 +63,9 @@ private:
 
     omp::HandEvaluator m_eval;
 
-    std::vector<Card> m_cards;
+    Hand m_cards;
+
+    Hand m_community_cards;
 
     friend class Pre_flop;
     friend class Flop;
