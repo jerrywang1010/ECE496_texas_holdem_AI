@@ -6,8 +6,7 @@ class Pre_flop : public Game_state
 {
 
 public:
-    // Currently not used, but might be useful in the future
-    void enter (Game* game);
+    void enter(Game* game);
 
     void exit(Game* game);
     
@@ -30,8 +29,7 @@ class Flop : public Game_state
 {
 
 public:
-    // Currently not used, but might be useful in the future
-    void enter (Game* game);
+    void enter(Game* game);
 
     void exit(Game* game);
     
@@ -59,8 +57,7 @@ class Turn : public Game_state
 {
 
 public:
-    // Currently not used, but might be useful in the future
-    void enter (Game* game);
+    void enter(Game* game);
 
     void exit(Game* game);
     
@@ -85,8 +82,7 @@ class River : public Game_state
 {
 
 public:
-    // Currently not used, but might be useful in the future
-    void enter (Game* game);
+    void enter(Game* game);
 
     void exit(Game* game);
     
@@ -111,8 +107,7 @@ class Showdown : public Game_state
 {
 
 public:
-    // Currently not used, but might be useful in the future
-    void enter (Game* game);
+    void enter(Game* game);
 
     void exit(Game* game);
     
@@ -135,8 +130,7 @@ class Terminal : public Game_state
 {
 
 public:
-    // Currently not used, but might be useful in the future
-    void enter (Game* game);
+    void enter(Game* game);
 
     void exit(Game* game);
     
