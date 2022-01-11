@@ -1,17 +1,19 @@
 #include <iostream>
+#include <string>
+#include <Windows.h>
+#include <cstdio>
 // #include "game_rule.h"
 #include "game.h"
 
 int main()
 {
-    // Hand hand_1 = {Card(9, 'c'), Card(13, 'd'), Card(8, 'd'), Card(9, 'd'), Card(2, 'd')};
-    // Hand hand_2 = {Card(9, 'h'), Card(13, 'd'), Card(8, 'd'), Card(9, 's'), Card(2, 'd')};
-
-    // Game_rule game_rule;
-    // std::cout << game_rule.get_card_ranking(hand_1) << "\n";
-    // std::cout << game_rule.get_card_ranking(hand_2) << "\n";
+    // Set console code page to UTF-8 so console known how to interpret string data
+    SetConsoleOutputCP(CP_UTF8);
 
     Game game;
     game.run(10);
+
+    // Enable buffering to prevent VS from chopping up UTF-8 byte sequences
+    // setvbuf(stdout, nullptr, _IOFBF, 1000);
 }
 
