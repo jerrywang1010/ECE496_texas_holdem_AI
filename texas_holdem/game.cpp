@@ -4,8 +4,6 @@
 #include <algorithm>
 #include <time.h>
 
-const static std::unordered_map<std::string, unsigned> suits_idx ( { {"spade", 0}, {"heart", 1}, {"club", 2}, {"diamond", 3} } );
-
 const static std::unordered_map<unsigned, std::string> hand_ranking ( {
             {1, "High card"}, {2, "Pair"}, {3, "Two pair"}, 
             {4, "Three of a kind"}, {5, "Straight"}, {6, "Flush"}, 
@@ -24,6 +22,14 @@ Game::Game()
     srand(time (nullptr));
 }
 
+
+/**
+ * Transitions from the current state to the next state of the game state machine,
+ * updates current state and calls state transition functions
+ *
+ * @param  new_state
+ * @return void 
+ */
 void Game::transition(Game_state& new_state)
 {
     m_state->exit(this);
@@ -31,11 +37,23 @@ void Game::transition(Game_state& new_state)
     m_state->enter(this);
 }
 
+/**
+ * Envoke the override process function of a game state object
+ *
+ * @param  none
+ * @return void 
+ */
 void Game::process_state()
 {
     m_state->process(this);
 }
 
+/**
+ * Run the game for a fixed number of iteration
+ *
+ * @param  max_iteration
+ * @return void 
+ */
 void Game::run(unsigned iteration)
 {
     m_iteration = iteration;
@@ -45,7 +63,14 @@ void Game::run(unsigned iteration)
     }
 }
 
-// a round is finished if all player had a valid action
+
+/**
+ * checks if the current round is finished
+ * a round is finished if all player had a valid action
+ *
+ * @param  none
+ * @return bool 
+ */
 bool Game::round_finished() const
 {
     // either all player check
@@ -62,6 +87,12 @@ bool Game::round_finished() const
 }
 
 
+/**
+ * clear the round actions of all players
+ *
+ * @param  none
+ * @return void 
+ */
 void Game::clear_round_action()
 {
     for (auto& player : m_players)
@@ -71,6 +102,12 @@ void Game::clear_round_action()
 }
 
 
+/**
+ * clear the history actions of all players
+ *
+ * @param  none
+ * @return void
+ */
 void Game::clear_his_action()
 {
     for (auto& player : m_players)
@@ -79,7 +116,12 @@ void Game::clear_his_action()
     }
 }
 
-
+/**
+ * record history actions of all players
+ *
+ * @param  none
+ * @return void
+ */
 void Game::update_his_action()
 {
     for (auto& player : m_players)
@@ -88,12 +130,64 @@ void Game::update_his_action()
     }
 }
 
+/**
+ * clear the hands of all players
+ *
+ * @param  none
+ * @return void
+ */
 void Game::clear_player_hand()
 {
     for (auto& player : m_players)
     {
         player.clear_hand();
     }
+}
+
+/**
+ * clear the usable cards of all players
+ *
+ * @param  none
+ * @return void
+ */
+void Game::clear_player_usable_cards()
+{
+    for (auto& player : m_players)
+    {
+        player.clear_usable_cards();
+    }
+}
+
+void Game::display_community_cards()
+{
+    std::sort(m_community_cards.begin(), m_community_cards.end());
+    std::cout << "------------------------------------------------\n";
+    std::cout << "Community cards:\n";
+
+    UTILS::display_hand(m_community_cards);
+    std::cout << "\n";
+}
+
+/**
+ * add a hand to the community cards for the current game
+ *
+ * @param  Hand
+ * @return void
+ */
+void Game::add_to_community_cards(Hand h)
+{
+    this->m_community_cards.insert(m_community_cards.end(), h.begin(), h.end());
+}
+
+/**
+ * clear all community cards
+ *
+ * @param  none
+ * @return void
+ */
+void Game::clear_community_cards()
+{
+    this->m_community_cards.clear();
 }
 
 
@@ -115,10 +209,64 @@ uint16_t Game::get_hand_ranking(Hand hand) const
         h += omp::Hand(card);
     }
     uint16_t score = m_eval.evaluate(h);
-    std::cout << "Hand ranking=" << hand_ranking.at(score/4096) << std::endl;
+    std::cout << "Hand ranking=" << MAGENTA << hand_ranking.at(score/4096) << RESET << std::endl;
     return score;
 }
 
+
+/**
+ * pick 9 cards from 0-51
+ * card[0, 1] is assigned to player 0, card[2, 3] is assgined to player 1
+ * card[4, 8] are community cards
+ *
+ * @param  none
+ * @return void
+ */
+void Game::shuffle_and_deal()
+{
+    // std::random_device dev;
+    // std::mt19937 rng(dev());
+    // std::uniform_int_distribution<std::mt19937::result_type> dist(0, 51);
+    while (m_cards.size() < 9)
+    {
+        // unsigned rand = dist(rng);
+        unsigned random = rand() % 51;
+        if (std::find(m_cards.begin(), m_cards.end(), random) == m_cards.end())
+        {
+            m_cards.push_back(random);
+        }
+    }
+}
+
+
+// assume only 2 players
+void Game::display_round_result() const
+{
+    if (m_loss_player_idx == 0)
+    {
+        std::cout << 
+        R"(
+            .______    __          ___   ____    ____  _______ .______          __     ____    __    ____  __  .__   __.      _______.
+            |   _  \  |  |        /   \  \   \  /   / |   ____||   _  \        /_ |    \   \  /  \  /   / |  | |  \ |  |     /       |
+            |  |_)  | |  |       /  ^  \  \   \/   /  |  |__   |  |_)  |        | |     \   \/    \/   /  |  | |   \|  |    |   (----`
+            |   ___/  |  |      /  /_\  \  \_    _/   |   __|  |      /         | |      \            /   |  | |  . `  |     \   \
+            |  |      |  `----./  _____  \   |  |     |  |____ |  |\  \----.    | |       \    /\    /    |  | |  |\   | .----)   |   
+            | _|      |_______/__/     \__\  |__|     |_______|| _| `._____|    |_|        \__/  \__/     |__| |__| \__| |_______/    
+        )" << "\n";
+    }
+    else
+    {
+        std::cout <<
+        R"(
+            .______    __          ___   ____    ____  _______ .______           ___      ____    __    ____  __  .__   __.      _______.
+            |   _  \  |  |        /   \  \   \  /   / |   ____||   _  \         / _ \     \   \  /  \  /   / |  | |  \ |  |     /       |
+            |  |_)  | |  |       /  ^  \  \   \/   /  |  |__   |  |_)  |       | | | |     \   \/    \/   /  |  | |   \|  |    |   (----`
+            |   ___/  |  |      /  /_\  \  \_    _/   |   __|  |      /        | | | |      \            /   |  | |  . `  |     \   \
+            |  |      |  `----./  _____  \   |  |     |  |____ |  |\  \----.   | |_| |       \    /\    /    |  | |  |\   | .----)   |   
+            | _|      |_______/__/     \__\  |__|     |_______|| _| `._____|    \___/         \__/  \__/     |__| |__| \__| |_______/    
+        )" << "\n";
+    }
+}
 
 void Game::print_round_action() const
 {
@@ -147,41 +295,6 @@ void Game::print_round_action() const
         
         default:
             break;
-        }
-    }
-}
-
-
-/**
- * The function return an uint representation of a card, so that it could be used to evaluate a hand
- * CardIdx is an integer between 0 and 51, so that CARD = 4 * RANK + SUIT, where
- * rank ranges from 0 (deuce) to 12 (ace) and suit is from 0 (spade), 1 (heart), 2 (club), 3 (diamond).
- *
- * @param  hand
- * @return 16bit 
- */
-inline unsigned translate_card_to_idx(Card_visualization card)
-{   
-    return 4 * ((card.rank + 11) % 13) + suits_idx.at(card.suit);
-}
-
-
-
-// pick 9 cards from 0-51
-// card[0, 1] is assigned to player 0, card[2, 3] is assgined to player 1
-// card[4, 8] are community cards
-void Game::shuffle_and_deal()
-{
-    // std::random_device dev;
-    // std::mt19937 rng(dev());
-    // std::uniform_int_distribution<std::mt19937::result_type> dist(0, 51);
-    while (m_cards.size() < 9)
-    {
-        // unsigned rand = dist(rng);
-        unsigned random = rand() % 51;
-        if (std::find(m_cards.begin(), m_cards.end(), random) == m_cards.end())
-        {
-            m_cards.push_back(random);
         }
     }
 }
