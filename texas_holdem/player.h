@@ -13,7 +13,12 @@ class Player
 {
 
 private:
+    // the 2 cards that is private to this player
     Hand m_hand;
+    // all the cards that this player can use to form a 5 cards hand
+    // private hadn + all community card
+    Hand m_usable_cards;
+
     int m_balance;
 
     // history action in a game
@@ -33,13 +38,19 @@ public:
 
     Hand get_hand() const;
 
+    Hand get_usable_cards() const;
+
     int get_balance() const;
 
     void update_balanace(int money);
 
     void add_to_hand(Hand h);
 
+    void add_to_usable_cards(Hand h);
+
     void clear_hand();
+
+    void clear_usable_cards();
 
     void set_balance(int balanace);
 
@@ -54,4 +65,6 @@ public:
     void clear_round_action() {m_round_action.clear();}
 
     void display_hand();
+
+    void display_usable_cards();
 };
