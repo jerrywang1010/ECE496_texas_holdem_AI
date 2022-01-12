@@ -71,6 +71,12 @@ enum class Round : std::int16_t
     SHOWDOWN = 4
 };
 
+enum class Node_type : std::int16_t
+{
+    Terminal = 0,
+    Chance   = 1,
+    Action   = 2
+};
 
 namespace UTILS
 {
