@@ -9,14 +9,19 @@
 int main()
 {
     // Set console code page to UTF-8 so console known how to interpret string data
-    //SetConsoleOutputCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
 
     //Game game;
     //game.run(10);
 
-    Hand deck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+    Hand deck = {1,5,9,13,17,21,25,29,33};
     GameTree tree;
     tree.build_tree(deck);
+    tree.print_tree();
+
+    // Card card = 1;
+    // UTILS::display_card(card);
+    // UTILS::print_card(card);
 
     
 
