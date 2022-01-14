@@ -33,18 +33,11 @@ const std::string s[] =
     u8"└─────────┘"
 };
 
-const static std::unordered_map<unsigned, std::string> suits ( { {0, u8"♠"}, {1, u8"♥"}, {2, u8"♣"}, {3, u8"♦"} } );
+const static std::unordered_map<unsigned, std::string> suits ( { {0, "Spade"}, {1, "Heart"}, {2, "club"}, {3, "Diamond"} } );
+// const static std::unordered_map<unsigned, std::string> suits ( { {0, u8"♠"}, {1, u8"♥"}, {2, u8"♣"}, {3, u8"♦"} } );
 const static std::unordered_map<unsigned, std::string> ranks ( { {1, "A "}, {2, "2 "}, {3, "3 "}, {4, "4 "}, {5, "5 "}, {6, "6 "}, {7, "7 "}, 
                                                                  {8, "8 "}, {9, "9 "}, {10, "10"}, {11, "J "}, {12, "Q "}, {13, "K "} } );
 // const static std::unordered_map<std::string, unsigned> suits_idx ( { {"spade", 0}, {"heart", 1}, {"club", 2}, {"diamond", 3} } );
-
-/*
-typedef struct Card_visualization
-{
-    unsigned rank;
-    std::string suit;
-} Card_visualization;
-*/
 
 enum class Action : std::int16_t
 {
@@ -80,6 +73,8 @@ enum class Node_type : std::int16_t
     Invalid  = 4
 };
 
+const static std::unordered_map<Action, std::string> action_to_str ( { {Action::BET, "Bet"}, {Action::FOLD, "Fold"}, {Action::CHECK, "Check"}, {Action::INVALID, "Invalid"} } );
+
 namespace UTILS
 {
 /**
@@ -96,22 +91,29 @@ static void print_card(Card card)
         rank -= 13;
     }
     std::string suit = suits.at(card % 4);
-    
-    std::cout << "rank=" << rank << " ,suit=" << suit << std::endl;
+    std::cout << "rank=" << rank << " ,suit=" << boost::format("%1%") % suit;
 }
 
-template<class T>
-static void print_vectors(const std::vector<T> & my_vector)
+
+static void print_hand(const Hand & h)
 {
-    for(int i = 0; i < my_vector.size(); i++)
+    for (Card c : h)
     {
-        std::cout << my_vector[i] << " ";
+        print_card(c);
+        std::cout << ", ";
     }
-    std::cout << std::endl;
+    std::cout << "\n";
 }
 
 
-
+static void print_action_vec(const std::vector<Action> & actions)
+{
+    for (Action a : actions)
+    {
+        std::cout << action_to_str.at(a) << ", ";
+    }
+    std::cout << "\n";
+}
 
 
 /**
