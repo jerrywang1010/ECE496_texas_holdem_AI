@@ -34,20 +34,19 @@ typedef struct Infoset
     {
         std::cout << "+++++++info_set+++++++" << std::endl;
         std::cout << "Action_history: ";
-        UTILS::print_vectors(action_history);
+        UTILS::print_action_vec(action_history);
 
         std::cout << "Private_card: ";
-        UTILS::print_vectors(private_card);
+        UTILS::print_hand(private_card);
 
         std::cout << "Community_card: ";
-        UTILS::print_vectors(community_card);
+        UTILS::print_hand(community_card);
 
         std::cout << "Committed: [" << committed.first << ", " << committed.second << "]" << std::endl;
 
         std::cout << "+++++++++++++++++++++" << std::endl;
-        
     }
-    
+
 } Infoset;
 
 
@@ -91,7 +90,7 @@ public:
     float chance_prob;
     ChanceNode() {is_chance = true;}
     void build_chance_node(TreeNode* parent, Action a, const Board_state & args);
-    void print_node();
+    void print_node() override;
 };
 
 
@@ -105,7 +104,7 @@ public:
     int active_player_idx;
     ActionNode() {}
     void build_action_node(TreeNode* parent, Action a, const Board_state & args);
-    void print_node();
+    void print_node() override;
 };
 
 
@@ -121,5 +120,5 @@ public:
 
     TerminalNode() {is_terminal = true;}
     void build_terminal_node(TreeNode* parent, bool is_showdown, Action a, const omp::HandEvaluator & m_eval, const Board_state & args);
-    void print_node();
+    void print_node() override;
 };
