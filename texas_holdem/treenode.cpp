@@ -27,18 +27,19 @@ std::pair<int, int> calculate_utility(uint16_t score_active, uint16_t score_opp,
     }
 }
 
-void TerminalNode::print_node() override
+void TerminalNode::print_node()
 {
     std::cout << "=========================\n";
     printf("printing terminal node:\n");
     this->infoset.print_infoset();
     //utility
-
+    std::cout << "Utility: [" << this->utility.first << ", " << this->utility.second << "]" << std::endl;
     //active player index
-
+    std::cout << "Active Player: " << this->active_player_idx << std::endl;
     //round index
-
-
+    std::cout << "Round Index: " << this->round_idx << std::endl;
+    //num_of_children
+    std::cout << "Number of Children: " << this->children.size() << std::endl;
 }
 
 // parent must be an action node
@@ -50,6 +51,7 @@ void TerminalNode::build_terminal_node(TreeNode* parent, bool is_showdown, Actio
     this->infoset.add_to_action_history(a);
     int active_player_idx = dynamic_cast<ActionNode*> (parent)->active_player_idx;
     this->active_player_idx = active_player_idx;
+    this->round_idx = parent->round_idx;
 
     // if reached showdown round, call hand evaluator to determine which player won
     if (is_showdown)
@@ -86,14 +88,47 @@ void TerminalNode::build_terminal_node(TreeNode* parent, bool is_showdown, Actio
     }
 }
 
+void ChanceNode::print_node()
+{
+    std::cout << "=========================\n";
+    printf("printing chance node:\n");
+    this->infoset.print_infoset();
+    // chance prob
+    std::cout << "Chance Probability:" << this->chance_prob << std::endl;
+    // round idx
+    std::cout << "Round Index:" << this->round_idx << std::endl;
+    // size of chidlren
+    std::cout << "Number of Children:" << this->children.size() << std::endl;
+}
+
 
 // parent must be an action node
 void ChanceNode::build_chance_node(TreeNode* parent, Action a, const Board_state & args)
 {
     assert(a == Action::BET || a == Action::CHECK);
+    this->infoset.action_history = dynamic_cast<ActionNode*> (parent)->infoset.action_history;
     this->infoset.add_to_action_history(a);
     this->infoset.committed = parent->infoset.committed;
+    if (a == Action::BET) this->infoset.commit(dynamic_cast<ActionNode*> (parent)->active_player_idx, 1);
     this->round_idx = parent->round_idx + 1;
+}
+
+
+void ActionNode::print_node()
+{
+    std::cout << "=========================\n";
+    printf("printing action node:\n");
+    this->infoset.print_infoset();
+    // action this round
+    std::cout << "Action this round: ";
+    UTILS::print_action_vec(this->action_this_round);
+    std::cout << std::endl;
+    //active player index
+    std::cout << "Active Player: " << this->active_player_idx << std::endl;
+    //round index
+    std::cout << "Round Index: " << this->round_idx << std::endl;
+    // size of chidlren
+    std::cout << "Number of Children:" << this->children.size() << std::endl;
 }
 
 
@@ -102,6 +137,7 @@ void ActionNode::build_action_node(TreeNode* parent, Action a, const Board_state
 {
     this->infoset.action_history = parent->infoset.action_history;
     this->infoset.committed = parent->infoset.committed;
+    this->round_idx = parent->round_idx;
 
     if (parent->is_chance)
     {
@@ -111,6 +147,7 @@ void ActionNode::build_action_node(TreeNode* parent, Action a, const Board_state
     {
         assert(a != Action::INVALID);
         this->infoset.add_to_action_history(a);
+        this->action_this_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
         this->action_this_round.push_back(a);
         int player_idx = dynamic_cast<ActionNode*> (parent)->active_player_idx;
         if (a == Action::BET) this->infoset.commit(player_idx, 1);
@@ -129,6 +166,7 @@ void ActionNode::build_action_node(TreeNode* parent, Action a, const Board_state
     // turn, river round
     else if (parent->round_idx == 2 || parent->round_idx == 3)
     {
+
         assert(args.community_card.size() == 4 || args.community_card.size() == 5);
         this->infoset.add_to_community_card(args.community_card);
     }
