@@ -1,3 +1,4 @@
+#include <queue>
 #include "gametree.h"
 #include <set>
 
@@ -72,7 +73,7 @@ std::vector<Hand> all_combination(Hand deck, int round_idx)
     else if (round_idx == 2 || round_idx == 3)
     {
         int data[1];
-        combination_helper(combinations, deck, data, 0, deck.size() - 1, 0, 3);
+        combination_helper(combinations, deck, data, 0, deck.size() - 1, 0, 1);
     }
     return combinations;
 }
@@ -89,7 +90,13 @@ Node_type GameTree::get_next_node_type(TreeNode* parent, Action a)
         // next node must be action
         return Node_type::Action;
     }
+    if (dynamic_cast<ActionNode*> (parent)->action_this_round.size() == 0)
+    {
+        return Node_type::Action;
+    }
+    
     Action prev_action = dynamic_cast<ActionNode*> (parent)->action_this_round.back();
+    
     // if prev act = B, then 'B(p)B(c)' or 'CB(p)B(c)' next must be next round 
     // if prev act = C, then 'C(p)C(c)' -> next round
     if (prev_action == Action::BET || (prev_action == Action::CHECK && a == Action::CHECK))
@@ -211,6 +218,45 @@ void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
     }
 }
 
+
+void GameTree::print_tree()
+{
+    std::queue<std::pair<int, TreeNode*> > nodes;
+    nodes.push(std::make_pair(0, this->root));
+    while (!nodes.empty())
+    {
+        int curr_depth = nodes.front().first;
+        TreeNode* node = nodes.front().second;
+        nodes.pop();
+        tree_with_depth[curr_depth].push_back(node);
+        for (TreeNode* child : node->children)
+        {
+            nodes.push(std::make_pair(curr_depth + 1, child));
+        }
+    }
+    
+    for (int depth = 0; depth < this->tree_with_depth.size(); depth ++)
+    {
+        std::cout << "Nodes at depth: " << depth << "\n";
+        for (TreeNode* node : this->tree_with_depth[depth])
+        {
+            if (node->is_chance)
+            {
+                node = dynamic_cast<ChanceNode*> (node);
+            }
+            else if (node->is_terminal)
+            {
+                node = dynamic_cast<TerminalNode*> (node);
+            }
+            else
+            {
+                node = dynamic_cast<ActionNode*> (node);
+            }
+            node->print_node();
+        }
+    }
+    //print each level of tree
+}
 
 /*
 void GameTree::recursive_build_tree(TreeNode* parent)
