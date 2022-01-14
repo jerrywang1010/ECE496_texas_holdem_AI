@@ -1,4 +1,5 @@
 #pragma once
+#include <unordered_map>
 #include "treenode.h"
 
 class GameTree
@@ -8,6 +9,7 @@ private:
     omp::HandEvaluator m_eval;
 
 public:
+    std::unordered_map<int, std::vector<TreeNode*> > tree_with_depth;
     GameTree() : root(nullptr), m_eval (omp::HandEvaluator()) {}
     void build_tree(Hand deck);
     void recursive_build_tree(TreeNode* parent, Board_state args);
