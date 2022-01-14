@@ -75,7 +75,9 @@ enum class Node_type : std::int16_t
 {
     Terminal = 0,
     Chance   = 1,
-    Action   = 2
+    Action   = 2,
+    Showdown = 3,
+    Invalid  = 4
 };
 
 namespace UTILS
@@ -97,6 +99,19 @@ static void print_card(Card card)
     
     std::cout << "rank=" << rank << " ,suit=" << suit << std::endl;
 }
+
+template<class T>
+static void print_vectors(const std::vector<T> & my_vector)
+{
+    for(int i = 0; i < my_vector.size(); i++)
+    {
+        std::cout << my_vector[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+
+
 
 
 /**
