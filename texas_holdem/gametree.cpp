@@ -16,6 +16,73 @@ void GameTree::build_tree(Hand deck)
 }
 
 
+void combination_helper_with_limit(std::vector<Hand> & res, const Hand & deck, int data[], int start, int end, int index, int r, int limit)
+{
+    if (index == r)
+    {
+        Hand curr_comb;
+        for (int j = 0; j < r; j ++)
+        {
+            curr_comb.push_back(data[j]);
+        }
+        res.push_back(curr_comb);
+        return;
+    }
+    for (int i = start; (i <= end) && (end - i + 1 >= r - index); i ++)
+    {
+        data[index] = deck[i];
+        if (res.size() == limit){
+            return;
+        }
+        combination_helper_with_limit(res, deck, data, i + 1, end, index + 1, r, limit);
+    }
+}
+
+
+std::vector<Hand> all_combination_with_limit(Hand deck, int round_idx, int limit)
+{
+    std::vector<Hand> combinations;
+    // entering pre flop round, choose 2 cards from deck, then choose another 2 cards from remaining deck, return all combination
+    if (round_idx == 0)
+    {
+        std::vector<Hand> partial_result;
+        int data[2];
+        combination_helper_with_limit(partial_result, deck, data, 0, deck.size() - 1, 0, 2, limit);
+        std::set<int> s(deck.begin(), deck.end());
+        for (int i = 0; i < partial_result.size(); i++)
+        {
+            s.erase(partial_result[i][0]);
+            s.erase(partial_result[i][1]);
+            int data_card[2];
+            std::vector<Hand> partial_result_2;
+            Hand v(s.begin(), s.end());
+            combination_helper_with_limit(partial_result_2, v, data_card, 0, v.size()-1, 0, 2, limit);
+            for (int j = 0; j < partial_result_2.size(); j++)
+            {
+                if (combinations.size() == limit) return combinations;
+                Hand vec = {partial_result[i][0], partial_result[i][1], partial_result_2[j][0], partial_result_2[j][1]};
+                combinations.push_back(vec);
+            }
+            s.insert(partial_result[i][0]);
+            s.insert(partial_result[i][1]);
+        }
+    }
+    // entering flop round, choose 3 community card
+    else if (round_idx == 1)
+    {
+        int data[3];
+        combination_helper_with_limit(combinations, deck, data, 0, deck.size() - 1, 0, 3, limit);
+    }
+    // entering turn/river round, choose 1 community card
+    else if (round_idx == 2 || round_idx == 3)
+    {
+        int data[1];
+        combination_helper_with_limit(combinations, deck, data, 0, deck.size() - 1, 0, 1, limit);
+    }
+    return combinations;
+}
+
+
 void combination_helper(std::vector<Hand> & res, const Hand & deck, int data[], int start, int end, int index, int r)
 {
     if (index == r)
@@ -152,7 +219,8 @@ void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
     if (parent->is_chance)
     {
         Board_state original_args = args;
-        std::vector<Hand> chance_events = all_combination(args.remaining_deck, parent->round_idx);
+        // std::vector<Hand> chance_events = all_combination(args.remaining_deck, parent->round_idx);
+        std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, parent->round_idx, 2);
         dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / chance_events.size();
         // first action node in preflop round 
         // if it building the first action node in preflop round, let the first node temporarily hold all 4 private card
