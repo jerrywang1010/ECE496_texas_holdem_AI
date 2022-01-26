@@ -39,6 +39,7 @@ const static std::unordered_map<unsigned, std::string> ranks ( { {1, "A "}, {2, 
                                                                  {8, "8 "}, {9, "9 "}, {10, "10"}, {11, "J "}, {12, "Q "}, {13, "K "} } );
 // const static std::unordered_map<std::string, unsigned> suits_idx ( { {"spade", 0}, {"heart", 1}, {"club", 2}, {"diamond", 3} } );
 
+/*
 enum class Action : std::int16_t
 {
     FOLD    = 0,
@@ -46,6 +47,16 @@ enum class Action : std::int16_t
     BET     = 2,
     INVALID = 3
 };
+*/
+
+enum class Action : std::int16_t
+{
+    INVALID = 0,
+    FOLD    = 1,
+    CHECK   = 2,
+    BET     = 3
+};
+
 
 enum class Round_result : std::int16_t
 {
@@ -83,7 +94,7 @@ namespace UTILS
  * @param  card
  * @return void 
  */
-static void print_card(Card card)
+static void print_card(Card card, std::ostream& s)
 {
     unsigned rank = card / 4 + 2;
     if (rank > 13) 
@@ -91,28 +102,29 @@ static void print_card(Card card)
         rank -= 13;
     }
     std::string suit = suits.at(card % 4);
-    std::cout << "rank=" << rank << " ,suit=" << boost::format("%1%") % suit;
+    // s << "rank=" << rank << " ,suit=" << boost::format("%1%") % suit;
+    s << suit << " " << rank;
 }
 
 
-static void print_hand(const Hand & h)
+static void print_hand(const Hand & h, std::ostream& s)
 {
     for (Card c : h)
     {
-        print_card(c);
-        std::cout << ", ";
+        print_card(c, s);
+        s << ", ";
     }
-    std::cout << "\n";
+    s << "\n";
 }
 
 
-static void print_action_vec(const std::vector<Action> & actions)
+static void print_action_vec(const std::vector<Action> & actions, std::ostream& s)
 {
     for (Action a : actions)
     {
-        std::cout << action_to_str.at(a) << ", ";
+        s << action_to_str.at(a) << ", ";
     }
-    std::cout << "\n";
+    s << "\n";
 }
 
 
