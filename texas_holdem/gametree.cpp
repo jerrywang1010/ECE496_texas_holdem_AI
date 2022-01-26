@@ -220,7 +220,7 @@ void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
     {
         Board_state original_args = args;
         // std::vector<Hand> chance_events = all_combination(args.remaining_deck, parent->round_idx);
-        std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, parent->round_idx, 2);
+        std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, parent->round_idx, 1);
         dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / chance_events.size();
         // first action node in preflop round 
         // if it building the first action node in preflop round, let the first node temporarily hold all 4 private card
@@ -287,7 +287,7 @@ void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
 }
 
 
-void GameTree::print_tree()
+void GameTree::print_tree(std::ostream& s)
 {
     std::queue<std::pair<int, TreeNode*> > nodes;
     nodes.push(std::make_pair(0, this->root));
@@ -302,10 +302,9 @@ void GameTree::print_tree()
             nodes.push(std::make_pair(curr_depth + 1, child));
         }
     }
-    
     for (int depth = 0; depth < this->tree_with_depth.size(); depth ++)
     {
-        std::cout << "Nodes at depth: " << depth << "\n";
+        // std::cout << "Nodes at depth: " << depth << "\n";
         for (TreeNode* node : this->tree_with_depth[depth])
         {
             if (node->is_chance)
@@ -320,140 +319,8 @@ void GameTree::print_tree()
             {
                 node = dynamic_cast<ActionNode*> (node);
             }
-            node->print_node();
-        }
-    }
-    //print each level of tree
-}
-
-/*
-void GameTree::recursive_build_tree(TreeNode* parent)
-{
-
-    how to pass private card info in to the second recursive function call?
-    1. add function argument
-    2. temporarily store in parent private hand, then remove in children
-    3. 
-    if (parent->is_chance)
-    {
-        std::vector<Hand> chance_events = all_combination(std::static_cast<ChanceNode*> (parent)->remainder_deck, parent->round_idx);
-        std::static_cast<ChanceNode*> parent->chance_prob = 1.0f / chance_events.size();
-
-        // first action node in preflop round 
-        // if it building the first action node in preflop round, let the first node temporarily hold all 4 private card
-        // then the second action node query it's parent and get it's private hand and delete it in parents 
-        for (Hand & h : chance_events)
-        {   
-            // build all action nodes result from a chance event
-            ActionNode* node = build_action_node(parent, Action::INVALID, h);
-            parent->children.push_back(node);
-            recursive_build_tree(node);
-        }
-    }
-
-    // parent must be an action node
-    else
-    {
-        std::vector<Action> legal_actions = get_legal_actions(parent);
-        for (Action a : legal_actions)
-        {
-            // 2 base case, no more recursive call after terminal nodes
-            // if playing a lead to terminal node
-            Node_type next_node = get_next_node_type(parent, a);
-            if (next_node == Node_type::Terminal)
-            {
-                TerminalNode* node = build_terminal_node(parent, false, a, m_eval);
-                parent->children.push_back(node);
-            }
-            else if (next_node == Node_type::Showdown)
-            {
-                TerminalNode* node = build_terminal_node(parent, true, a, m_eval);
-                parent->children.push_back(node);
-            }
-
-            else if (next_node == Node_type::Chance)
-            {
-                ChanceNode* node = build_chance_node(parent);
-                parent->children.push_back(node);
-                recursive_build_tree(node);
-            }
-            else
-            {
-                ActionNode* node = build_action_node(parent, a, {});
-                parent->children.push_back(node);
-                recursive_build_tree(node);
-            }
+            node->print_node(depth, s);
         }
     }
 }
 
-
-//pesudcode
-void recursive_build_tree(BaseNode* parent){
-
-    //determine which type of node this is
-    //if parent is chance node, this is action node
-    //if parent is action node, this can be terminal,chance or action
-    //use action_this_round of parent, if action_this_round = BB/CC/CBB, this is chance node
-    //use action_this_round of parent, if action_this_round = xxF, this is terminal node
-    //or use max_depth of tree to determine
-
-    if(chancenode){
-        for comb in combinations:
-            build_chance_node(comb);
-    }elseif(terminalnode){
-        build_terminal_node();
-    }else{
-        if(fold){
-            build_action_node(fold);
-        }
-        if(check){
-            build_action_node(check);
-        }
-        if(bet){
-            build_action_node(bet);
-        }
-        
-    }
-}
-
-void build_chance_node(BaseNode* parent){
-
-    //constructor
-    ChanceNode* CN = new ChanceNode();
-    CN.parent = parent;
-    //update everything in CN
-
-    parent.child.append(CN);
-
-    recursive_build_tree();
-
-}
-
-void build_terminal_node(){
-
-    //constructor
-    TerminalNode* TN = new TerminalNode();
-    TN.parent = parent;
-    //update everything in TN
-
-    parent.child.append(TN);
-
-    //construct tree end here
-}
-
-void build_action_node(){
-
-    //constructor
-    ActionNode* AN = new ActionNode();
-    AN.parent = parent;
-    //update everything in TN
-
-    parent.child.append(AN);
-
-    recursive_build_tree();
-}
-
-
-
-*/
