@@ -29,22 +29,30 @@ typedef struct Infoset
             committed.second += bet;
         }
     }
-
-    void print_infoset()
+    
+    void print_infoset(std::ostream& s)
     {
-        std::cout << "+++++++info_set+++++++" << std::endl;
-        std::cout << "Action_history: ";
-        UTILS::print_action_vec(action_history);
+        s << "========INFORMATION SET========" << "\n";
+        if (action_history != 0)
+        {
+            s << "Action_history: ";
+            UTILS::print_action_vec(action_history, s);
+        }
 
-        std::cout << "Private_card: ";
-        UTILS::print_hand(private_card);
+        if (private_card.size())
+        {
+            s << "Private_card: ";
+            UTILS::print_hand(private_card, s);
+        }
+        if (community_card.size())
+        {
+            s << "Community_card: ";
+            UTILS::print_hand(community_card, s);
+        }
 
-        std::cout << "Community_card: ";
-        UTILS::print_hand(community_card);
+        s << "Committed: [" << committed.first << ", " << committed.second << "]" << "\n";
 
-        std::cout << "Committed: [" << committed.first << ", " << committed.second << "]" << std::endl;
-
-        std::cout << "+++++++++++++++++++++" << std::endl;
+        s << "===============================" << "\n";
     }
 
 } Infoset;
@@ -77,7 +85,7 @@ public:
     int round_idx = 0;
     bool is_terminal = false;
     bool is_chance = false;
-    virtual void print_node() {};
+    virtual void print_node(int depth, std::ostream& s) {};
 };
 
 
@@ -90,7 +98,7 @@ public:
     float chance_prob;
     ChanceNode() {is_chance = true;}
     void build_chance_node(TreeNode* parent, Action a, const Board_state & args);
-    void print_node() override;
+    void print_node(int depth, std::ostream& s) override;
 };
 
 
@@ -104,7 +112,7 @@ public:
     int active_player_idx;
     ActionNode() {}
     void build_action_node(TreeNode* parent, Action a, const Board_state & args);
-    void print_node() override;
+    void print_node(int depth, std::ostream& s) override;
 };
 
 
@@ -120,5 +128,5 @@ public:
 
     TerminalNode() {is_terminal = true;}
     void build_terminal_node(TreeNode* parent, bool is_showdown, Action a, const omp::HandEvaluator & m_eval, const Board_state & args);
-    void print_node() override;
+    void print_node(int depth, std::ostream& s) override;
 };
