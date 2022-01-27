@@ -11,8 +11,6 @@ void GameTree::build_tree(Hand deck)
     args.remaining_deck = deck;
 
     recursive_build_tree(root, args);
-    //return all combination of choosing 4 cards from deck
-    //std::vector<Card> comb = combination(int num_card, Hand deck);
 }
 
 
@@ -157,18 +155,19 @@ Node_type GameTree::get_next_node_type(TreeNode* parent, Action a)
         // next node must be action
         return Node_type::Action;
     }
-    if (dynamic_cast<ActionNode*> (parent)->action_this_round.size() == 0)
+    if (dynamic_cast<ActionNode*> (parent)->action_this_round == 0)
     {
         return Node_type::Action;
     }
     
-    Action prev_action = dynamic_cast<ActionNode*> (parent)->action_this_round.back();
+    uint8_t action_this_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
+    Action prev_action = GET_LAST_ACTION(action_this_round);
     
     // if prev act = B, then 'B(p)B(c)' or 'CB(p)B(c)' next must be next round 
     // if prev act = C, then 'C(p)C(c)' -> next round
     if (prev_action == Action::BET || (prev_action == Action::CHECK && a == Action::CHECK))
     {
-        if (parent->round_idx == 3)
+        if (parent->infoset.round_idx == 3)
         {
             return Node_type::Showdown;
         }
@@ -183,13 +182,26 @@ Node_type GameTree::get_next_node_type(TreeNode* parent, Action a)
 }
 
 
+inline bool search_in_action_this_round(uint8_t action_this_round, Action target)
+{
+    Action a = GET_LAST_ACTION(action_this_round);
+    while (a != Action::INVALID)
+    {
+        if (a == target) return true;
+        DEL_LAST_ACTION(action_this_round);
+        a = GET_LAST_ACTION(action_this_round);
+    }
+    return false;
+}
+
+
 std::vector<Action> GameTree::get_legal_actions(TreeNode* parent)
 {
     // no need to worry sth like CBBB, this will be checked in the get_next_node_type
     // bet and fold must be legal action no matter what previous action is
     std::vector<Action> res{Action::FOLD, Action::BET};
     // if it's preflop round then no check are allowed
-    if (parent->round_idx > 0)
+    if (parent->infoset.round_idx > 0)
     {
         if (parent->is_chance)
         {
@@ -202,9 +214,8 @@ std::vector<Action> GameTree::get_legal_actions(TreeNode* parent)
             // if added then
             // if (parent->action_type == Action::Bet);
             // else res.push_back(1);
-            std::vector<Action> actions_in_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
-            if (std::find(actions_in_round.begin(), actions_in_round.end(), Action::BET) != actions_in_round.end());
-            else
+            uint8_t actions_in_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
+            if (!search_in_action_this_round(actions_in_round, Action::BET))
             {
                 res.push_back(Action::CHECK);
             }
@@ -219,8 +230,8 @@ void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
     if (parent->is_chance)
     {
         Board_state original_args = args;
-        // std::vector<Hand> chance_events = all_combination(args.remaining_deck, parent->round_idx);
-        std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, parent->round_idx, 1);
+        std::vector<Hand> chance_events = all_combination(args.remaining_deck, parent->infoset.round_idx);
+        // std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, parent->infoset.round_idx, 1);
         dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / chance_events.size();
         // first action node in preflop round 
         // if it building the first action node in preflop round, let the first node temporarily hold all 4 private card
@@ -228,7 +239,7 @@ void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
         for (Hand & h : chance_events)
         {   
             args.remove_from_deck(h);
-            if (parent->round_idx == 0)
+            if (parent->infoset.round_idx == 0)
             {
                 args.add_to_private_card(h);
             }
