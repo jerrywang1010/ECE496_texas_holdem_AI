@@ -55,12 +55,11 @@ void print_round_name(int idx, std::ostream& s)
 void TerminalNode::print_node(int depth, std::ostream& s)
 {
     s << "=================== depth = " << depth << " ===================\n";
-    
-    if (this->infoset.action_history.back() == Action::FOLD) s << "printing FOLD TERMINAL node:\n";
+    if (GET_LAST_ACTION(this->infoset.action_history) == Action::FOLD) s << "printing FOLD TERMINAL node:\n";
     else s << "printing SHOWDOWN TERMINAL node:\n";
     s << "Active Player: " << this->active_player_idx << "\n";
     //round index
-    print_round_name(this->round_idx, s);
+    print_round_name(this->infoset.round_idx, s);
     //num_of_children
     s << "Number of Children: " << this->children.size() << "\n";
     //utility
@@ -82,7 +81,7 @@ void TerminalNode::build_terminal_node(TreeNode* parent, bool is_showdown, Actio
     this->infoset.add_to_action_history(a);
     int active_player_idx = dynamic_cast<ActionNode*> (parent)->active_player_idx;
     this->active_player_idx = active_player_idx;
-    this->round_idx = parent->round_idx;
+    this->infoset.round_idx = parent->infoset.round_idx;
 
     // if reached showdown round, call hand evaluator to determine which player won
     if (is_showdown)
@@ -124,7 +123,7 @@ void ChanceNode::print_node(int depth, std::ostream& s)
     s << "=================== depth = " << depth << " ===================\n";
     s << "printing CHANCE node:\n";
     // round idx
-    print_round_name(this->round_idx, s);
+    print_round_name(this->infoset.round_idx, s);
     // size of chidlren
     s << "Number of Children:" << this->children.size() << "\n";
     // chance prob
@@ -142,7 +141,7 @@ void ChanceNode::build_chance_node(TreeNode* parent, Action a, const Board_state
     this->infoset.add_to_action_history(a);
     this->infoset.committed = parent->infoset.committed;
     if (a == Action::BET) this->infoset.commit(dynamic_cast<ActionNode*> (parent)->active_player_idx, 1);
-    this->round_idx = parent->round_idx + 1;
+    this->infoset.round_idx = parent->infoset.round_idx + 1;
 }
 
 
@@ -153,19 +152,18 @@ void ActionNode::print_node(int depth, std::ostream& s)
     //active player index
     s << "Active Player: " << this->active_player_idx << "\n";
     //round index
-    print_round_name(this->round_idx, s);
+    print_round_name(this->infoset.round_idx, s);
     // size of chidlren
     s << "Number of Children:" << this->children.size() << "\n";
-    if (this->action_this_round.size())
+    if (this->action_this_round != 0)
     {
         s << "Action this round: ";
-        UTILS::print_action_vec(this->action_this_round, s);
+        UTILS::print_action_history(this->action_this_round, s);
         s << "\n";
     }
     s << "\n";
     this->infoset.print_infoset(s);
     s << "\n";
-    // action this round
 }
 
 
@@ -174,7 +172,7 @@ void ActionNode::build_action_node(TreeNode* parent, Action a, const Board_state
 {
     this->infoset.action_history = parent->infoset.action_history;
     this->infoset.committed = parent->infoset.committed;
-    this->round_idx = parent->round_idx;
+    this->infoset.round_idx = parent->infoset.round_idx;
 
     if (parent->is_chance)
     {
@@ -185,7 +183,7 @@ void ActionNode::build_action_node(TreeNode* parent, Action a, const Board_state
         assert(a != Action::INVALID);
         this->infoset.add_to_action_history(a);
         this->action_this_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
-        this->action_this_round.push_back(a);
+        ADD_TO_ACTIONS(this->action_this_round, a);
         int player_idx = dynamic_cast<ActionNode*> (parent)->active_player_idx;
         if (a == Action::BET) this->infoset.commit(player_idx, 1);
         this->active_player_idx = player_idx ^ 1;
@@ -195,20 +193,20 @@ void ActionNode::build_action_node(TreeNode* parent, Action a, const Board_state
     assert(args.private_card.size() == 4);
     this->infoset.add_to_private_card( { args.private_card[2 * this->active_player_idx], args.private_card[2 * this->active_player_idx + 1] } );
     // flop round, each player takes 3 community card
-    if (parent->round_idx == 1)
+    if (parent->infoset.round_idx == 1)
     {
         assert(args.community_card.size() == 3);
         this->infoset.add_to_community_card(args.community_card);
     }
     // turn, river round
-    else if (parent->round_idx == 2 || parent->round_idx == 3)
+    else if (parent->infoset.round_idx == 2 || parent->infoset.round_idx == 3)
     {
 
         assert(args.community_card.size() == 4 || args.community_card.size() == 5);
         this->infoset.add_to_community_card(args.community_card);
     }
-    else if (parent->round_idx != 0)
+    else if (parent->infoset.round_idx != 0)
     {
-        fprintf(stderr, "parent->round_idx too large\n");
+        fprintf(stderr, "parent->infoset.round_idx too large\n");
     }
 }
