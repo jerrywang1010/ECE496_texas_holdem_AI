@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stack>
 #include <unordered_map>
 #include <string>
 #include <memory>
@@ -57,6 +58,19 @@ enum class Action : std::int16_t
     BET     = 3
 };
 
+// template <typename T>
+// inline Action GET_LAST_ACTION(T actions) {return static_cast<Action> (actions & 0x3);}
+#define ACTION_MASK 0x3
+#define CARD_MASK   0x3F
+
+#define GET_LAST_ACTION(actions) (static_cast<Action>(actions & ACTION_MASK))
+#define DEL_LAST_ACTION(actions) (actions >>= 2)
+#define ADD_TO_ACTIONS(actions, a) ((actions <<= 2) |= static_cast<int16_t>(a))
+
+#define GET_LAST_CARD(hand) (static_cast<Card>(hand & CARD_MASK))
+#define DEL_LAST_CARD(hand) (hand >>= 6)
+#define ADD_TO_HAND(hand, c) ((hand <<= 6) |= c)
+
 
 enum class Round_result : std::int16_t
 {
@@ -86,6 +100,7 @@ enum class Node_type : std::int16_t
 
 const static std::unordered_map<Action, std::string> action_to_str ( { {Action::BET, "Bet"}, {Action::FOLD, "Fold"}, {Action::CHECK, "Check"}, {Action::INVALID, "Invalid"} } );
 
+
 namespace UTILS
 {
 /**
@@ -94,7 +109,7 @@ namespace UTILS
  * @param  card
  * @return void 
  */
-static void print_card(Card card, std::ostream& s)
+static inline void print_card(Card card, std::ostream& s)
 {
     unsigned rank = card / 4 + 2;
     if (rank > 13) 
@@ -107,10 +122,24 @@ static void print_card(Card card, std::ostream& s)
 }
 
 
-static void print_hand(const Hand & h, std::ostream& s)
+// print num cards in encoded hand h, h can be 32 bits unsigned or 16 bits unsigned
+template <typename T>
+static inline void print_hand(T h, std::ostream& s, int num)
 {
-    for (Card c : h)
+    // although it doesn't matter here the order of cards to be printed unlike action histry
+    // I am just doing it for consistency purpose
+    std::stack<Card> ordered_cards;
+    while (num > 0)
     {
+        Card c = GET_LAST_CARD(h);
+        ordered_cards.push(c);
+        DEL_LAST_CARD(h);
+        num --;
+    }
+    while (!ordered_cards.empty())
+    {
+        Card c = ordered_cards.top();
+        ordered_cards.pop();
         print_card(c, s);
         s << ", ";
     }
@@ -118,10 +147,20 @@ static void print_hand(const Hand & h, std::ostream& s)
 }
 
 
-static void print_action_vec(const std::vector<Action> & actions, std::ostream& s)
+static inline void print_action_history(uint32_t actions, std::ostream& s)
 {
-    for (Action a : actions)
+    std::stack<Action> ordered_actions;
+    Action a = GET_LAST_ACTION(actions);
+    while (a != Action::INVALID)
     {
+        DEL_LAST_ACTION(actions);
+        ordered_actions.push(a);
+        a = GET_LAST_ACTION(actions);
+    }
+    while (!ordered_actions.empty())
+    {
+        a = ordered_actions.top();
+        ordered_actions.pop();
         s << action_to_str.at(a) << ", ";
     }
     s << "\n";
