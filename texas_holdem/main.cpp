@@ -10,9 +10,20 @@
 
 /*
 memeory usage:
-before optimization: 9 cards deck: 514449408 bytes
-                     10 cards deck: 4386779136 bytes
+before optimization: 
+    9 cards deck: 514449408 bytes
+    10 cards deck: 4386779136 bytes
+use action history encoding: (save ~30%)
+    9 cards deck: 361824256 bytes
+    10 cards deck: 3054977024 bytes
 
+use 8 bits committed:
+    9 cards deck: 361803776 bytes
+    10 cards deck: 3054944256 bytes
+
+use 16 byte infoset:
+    9 cards deck: 206110720 bytes
+    10 cards deck: 1718247424 bytes
 */
 
 
@@ -27,9 +38,6 @@ int main()
     GameTree tree;
     tree.build_tree(deck);
 
-    std::ofstream output;
-    output.open("test.txt");
-    
     // system dependent code for memory profiling
     DWORDLONG virtual_mem_size;
     //get the handle to this process
@@ -46,8 +54,12 @@ int main()
     std::cout << "total virtual memory used by constructing the tree=" << virtual_mem_size << std::endl;
     //
 
-    tree.print_tree(output);
-    output.close();
+    // std::ofstream output;
+    // output.open("test.txt");
+    // tree.print_tree(output);
+    // output.close();
+
+
     // Card card = 1;
     // UTILS::display_card(card);
     // UTILS::print_card(card);
