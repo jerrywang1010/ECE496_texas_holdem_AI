@@ -4,6 +4,8 @@
 
 class GameTree
 {
+friend class CFR_Trainer;
+
 private:
     TreeNode* root;
     omp::HandEvaluator m_eval;
