@@ -46,11 +46,11 @@ float CFR_Trainer::cfr_utility_recursive (TreeNode* node, float reach_0, float r
     for (int i = 0; i < action_node->children.size(); i ++)
     {
         float action_cfr_regret = action_node->active_player_idx == 0 ? 
-                                  cfr_reach * children_state_utility[i] : 
-                                  -1 * cfr_reach * children_state_utility[i];
-
+                                  cfr_reach * (children_state_utility[i] - utility): 
+                                  -1 * cfr_reach * (children_state_utility[i] - utility);
         action_node->cumulative_cfr_regret[i] += action_cfr_regret;
         action_node->cumulative_sigma[i] += reach * action_node->sigma[i];
+        // std::cout << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i] << "\n";
     }
     return utility;
 }
@@ -90,8 +90,13 @@ inline void CFR_Trainer::update_sigma(ActionNode* node)
     for (int i = 0; i < num_actions; i ++)
     {
         node->sigma[i] = regret_sum > 0 ?
-                         std::max(node->cumulative_cfr_regret[i], 0.0f) / regret_sum :
+                         std::max(node->cumulative_cfr_regret[i], 1E-10f) / regret_sum :
                          1.0 / num_actions;
+        // if (node->sigma[i] <= 0)
+        // {
+        //     std::cout << "regret_sum=" << regret_sum << ", cumulative_cfr_regret[i]=" << node->cumulative_cfr_regret[i] << "\n";
+        //     assert(node->sigma[i] > 0);
+        // }
     }
 }
 
@@ -142,4 +147,43 @@ void CFR_Trainer::train(int iteration)
         update_sigma_recursive(this->tree.root);
     }
 }
+
+
+// put the final nash eq strategy inside sigma, since that's no longer needed
+void CFR_Trainer::compute_nash_eq_recursive(TreeNode* node)
+{
+    if (node->is_terminal) return;
+    if (node->is_chance)
+    {
+        for (auto child : node->children)
+        {
+            compute_nash_eq_recursive(child);
+        }
+    }
+    // action node
+    else
+    {
+        ActionNode* action_node = dynamic_cast<ActionNode*>(node);
+        float sigma_sum = 0;
+        std::for_each(action_node->cumulative_sigma.begin(), action_node->cumulative_sigma.end(), [&] (float n) {
+            sigma_sum += n;
+        });
+        for (int i = 0; i < action_node->children.size(); i ++)
+        {
+            action_node->sigma[i] = action_node->cumulative_sigma[i] / sigma_sum;
+        }
+        for (auto child : action_node->children)
+        {
+            compute_nash_eq_recursive(child);
+        }
+    }
+}
+
+
+void CFR_Trainer::compute_nash_eq()
+{
+    return compute_nash_eq_recursive(this->tree.root);
+}
+
+
 
