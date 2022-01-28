@@ -103,6 +103,17 @@ const static std::unordered_map<Action, std::string> action_to_str ( { {Action::
 
 namespace UTILS
 {
+template <typename T, typename A>
+static inline void print_vec(const std::vector<T, A>& v, std::ostream& s)
+{
+    for (auto e : v)
+    {
+        s << e << ", ";
+    }
+    s << "\n";
+}
+
+
 /**
  * The functions accepts a card or a hand of cards and display them in a more readable form
  *
