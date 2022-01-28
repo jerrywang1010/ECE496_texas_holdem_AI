@@ -7,6 +7,7 @@ void GameTree::build_tree(Hand deck)
 {
     //create a chance node
     root = new ChanceNode();
+    root->infoset.committed = {2, 1};
     Board_state args;
     args.remaining_deck = deck;
 
@@ -199,7 +200,7 @@ std::vector<Action> GameTree::get_legal_actions(TreeNode* parent)
 {
     // no need to worry sth like CBBB, this will be checked in the get_next_node_type
     // bet and fold must be legal action no matter what previous action is
-    std::vector<Action> res{Action::FOLD, Action::BET};
+    std::vector<Action> res{Action::BET, Action::FOLD};
     // if it's preflop round then no check are allowed
     if (parent->infoset.round_idx > 0)
     {
