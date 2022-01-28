@@ -128,7 +128,7 @@ class ChanceNode : public TreeNode
 {
 private:
     friend class GameTree;
-
+    friend class CFR_Trainer;
 public:
     float chance_prob;
     ChanceNode() {is_chance = true;}
@@ -139,9 +139,17 @@ public:
 
 class ActionNode : public TreeNode
 {
+    friend class GameTree;
+    friend class CFR_Trainer;
 private:
     // at most 3 actions per round in cases of check, bet, bet
     uint8_t action_this_round = 0;
+    // i=0 : BET
+    // i=1 : FOLD
+    // i=2 : CHECK
+    std::vector<float> sigma;
+    std::vector<float> cumulative_cfr_regret;
+    std::vector<float> cumulative_sigma;
     friend class GameTree;
 
 public:
@@ -156,11 +164,11 @@ class TerminalNode : public TreeNode
 {
 private:
     friend class GameTree;
-
+    friend class CFR_Trainer;
 public:
     int active_player_idx;
     // format will be <Up0, Up1>
-    std::pair<int,int> utility;
+    std::pair<float,float> utility;
 
     TerminalNode() {is_terminal = true;}
     void build_terminal_node(TreeNode* parent, bool is_showdown, Action a, const omp::HandEvaluator & m_eval, const Board_state & args);
