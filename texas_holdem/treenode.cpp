@@ -12,19 +12,20 @@ uint16_t evaluate_hand(const Hand & hand, const omp::HandEvaluator & m_eval)
 }
 
 
-std::pair<int, int> calculate_utility(uint16_t score_active, uint16_t score_opp, int active_player_idx, int money_exchanged)
+std::pair<float, float> calculate_utility(uint16_t score_active, uint16_t score_opp, int active_player_idx, std::pair<int, int> committed)
 {
     if (score_active > score_opp)
     {
-        return active_player_idx == 0 ? std::make_pair(money_exchanged, -1 * money_exchanged) : std::make_pair(-1 * money_exchanged, money_exchanged);
+        return active_player_idx == 0 ? std::make_pair(committed.second, -1 * committed.second) : std::make_pair(-1 * committed.first, committed.first);
     }
     else if (score_active < score_opp)
     {
-        return active_player_idx == 0 ? std::make_pair(-1 * money_exchanged, money_exchanged) : std::make_pair(money_exchanged, -1 * money_exchanged);
+        return active_player_idx == 0 ? std::make_pair(-1 * committed.first, committed.first) : std::make_pair(committed.second, -1 * committed.second);
     }
     else
     {
-        return std::make_pair(0, 0);
+        float payoff = (committed.first + committed.second) / 2.0f;
+        return std::make_pair(payoff - committed.first, payoff - committed.second);
     }
 }
 
@@ -65,7 +66,6 @@ void TerminalNode::print_node(int depth, std::ostream& s)
     //utility
     s << "Utility: [" << this->utility.first << ", " << this->utility.second << "]" << "\n";
     if (this->utility.first > 0) s << "Player 0 wins" << "\n";
-    else if (this->utility.first == 0) s << "Tied game" << "\n";
     else s << "Player 1 wins" << "\n";
     s << "\n";
     this->infoset.print_infoset(s);
@@ -95,9 +95,16 @@ void TerminalNode::build_terminal_node(TreeNode* parent, bool is_showdown, Actio
 
         uint16_t score_active = evaluate_hand(active_player_cards, m_eval);
         uint16_t score_opp = evaluate_hand(opp_cards, m_eval);
+        
+        // std::cout << "active idx=" << active_player_idx << std::endl;
+        // std::cout << "active player cards: ";
+        // UTILS::print_vec<Card>(active_player_cards, std::cout);
+        // std::cout << "oppo cards: ";
+        // UTILS::print_vec<Card>(opp_cards, std::cout);
 
-        assert(this->infoset.committed.first == this->infoset.committed.second);
-        this->utility = calculate_utility(score_active, score_opp, this->active_player_idx, this->infoset.committed.first);
+        // std::cout << "score active=" << score_active << ", score_opp=" << score_opp << "\n";
+
+        this->utility = calculate_utility(score_active, score_opp, this->active_player_idx, this->infoset.committed);
     }
 
     // active player folded that leads to terminal node
@@ -163,6 +170,18 @@ void ActionNode::print_node(int depth, std::ostream& s)
     }
     s << "\n";
     this->infoset.print_infoset(s);
+
+    s << "----------CFR utility and strategy----------" << "\n";
+    if (sigma.size())
+    {
+        s << "Sigma of [Bet, Fold, (Check)] = ";
+        UTILS::print_vec<float>(this->sigma, s);
+        s << "Cumulative sigma of [Bet, Fold, (Check)] = ";
+        UTILS::print_vec<float>(this->cumulative_sigma, s);
+        s << "Cumulative CFR regret of [Bet, Fold, (Check)] = ";
+        UTILS::print_vec<float>(this->cumulative_cfr_regret, s);
+    }
+
     s << "\n";
 }
 
