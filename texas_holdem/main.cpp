@@ -52,6 +52,7 @@ int main()
     t_start = std::clock();
     CFR_Trainer trainer(tree);
     trainer.train(100);
+    trainer.compute_nash_eq();
     t_end = std::clock();
     std::cout << "CFR Trainer took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
 
@@ -72,10 +73,10 @@ int main()
     std::cout << "total virtual memory used by constructing the tree=" << virtual_mem_size << std::endl;
     //
 
-    // std::ofstream output;
-    // output.open("test.txt");
-    // tree.print_tree(output);
-    // output.close();
+    std::ofstream output;
+    output.open("sigma.txt");
+    tree.print_tree(output);
+    output.close();
 
     // Card card = 1;
     // UTILS::display_card(card);
