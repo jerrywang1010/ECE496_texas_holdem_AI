@@ -11,7 +11,7 @@ find_library(PSAPI Psapi)
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS}) 
-    add_executable(main "main.cpp" "player.cpp" "game.cpp" "concrete_game_state.cpp" "gametree.cpp" "treenode.cpp") 
+    add_executable(main "main.cpp" "player.cpp" "game.cpp" "concrete_game_state.cpp" "gametree.cpp" "treenode.cpp" "CFR_Trainer.cpp") 
     target_include_directories(main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
     target_link_libraries(main ${Boost_LIBRARIES} ${CMAKE_SOURCE_DIR}/OMPEval-master/lib/ompeval.a -lpsapi)
 endif()
