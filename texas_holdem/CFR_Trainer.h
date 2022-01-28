@@ -10,8 +10,10 @@ private:
     inline void update_sigma(ActionNode* node);
     void trainer_init_recursive(TreeNode* node);
     void trainer_init();
+    void compute_nash_eq_recursive(TreeNode* node);
 
 public:
     CFR_Trainer(GameTree& tree) : tree(tree) { trainer_init(); }
     void train(int iteration = 1);
+    void compute_nash_eq();
 };
