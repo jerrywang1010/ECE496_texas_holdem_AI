@@ -31,10 +31,18 @@ float CFR_Trainer::cfr_utility_recursive (TreeNode* node, float reach_0, float r
     // i=2 : CHECK
     for (int i = 0; i < action_node->children.size(); i ++)
     {
-        if (action_node->active_player_idx == 0) reach_0 *= action_node->sigma[i];
-        else reach_1 *= action_node->sigma[i];
-
-        float child_state_utility = cfr_utility_recursive(action_node->children[i], reach_0, reach_1);
+        double child_reach_0=0, child_reach_1=0;
+        if (action_node->active_player_idx == 0) 
+        {
+            child_reach_0 = reach_0 * action_node->sigma[i];
+            child_reach_1 = reach_1;
+        }
+        else 
+        {
+            child_reach_1 = reach_1 * action_node->sigma[i];
+            child_reach_0 = reach_0;
+        }
+        float child_state_utility = cfr_utility_recursive(action_node->children[i], child_reach_0, child_reach_1);
 
         children_state_utility[i] = child_state_utility;
 
@@ -48,9 +56,65 @@ float CFR_Trainer::cfr_utility_recursive (TreeNode* node, float reach_0, float r
         float action_cfr_regret = action_node->active_player_idx == 0 ? 
                                   cfr_reach * (children_state_utility[i] - utility): 
                                   -1 * cfr_reach * (children_state_utility[i] - utility);
+
         action_node->cumulative_cfr_regret[i] += action_cfr_regret;
         action_node->cumulative_sigma[i] += reach * action_node->sigma[i];
-        // std::cout << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i] << "\n";
+        
+        /*
+        if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 1023 && node->infoset.round_idx == 2 )
+        {
+            std::cout << "node @ depth=8, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
+                        << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
+        }
+        if (action_node->active_player_idx == 0 && action_node->infoset.action_history == 4095 && action_node->infoset.round_idx == 3)
+        {
+            std::cout << "node @ depth=10, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
+                        << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
+        }
+        if (action_node->active_player_idx == 0 && action_node->infoset.action_history == 0 && action_node->infoset.round_idx == 0)
+        {
+            std::cout << "node @ depth=1, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i] << "\n";
+        }
+        if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 0x3 && action_node->infoset.round_idx == 0)
+        {
+            std::cout << "node @ depth=2, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i] 
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i] << "\n";
+        }
+        if (action_node->active_player_idx == 0 && action_node->infoset.action_history == 15 && node->infoset.community_card == 66906)
+        {
+            std::cout << "node @ depth=4, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i] << "\n";
+        }
+        if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 63 && node->infoset.community_card == 66906)
+        {
+            std::cout << "node @ depth=5, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
+                        << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
+        }
+        if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 1023 && node->infoset.round_idx == 2 )
+        {
+            std::cout << "node @ depth=8, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
+                        << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
+        }
+        if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 16383 && node->infoset.round_idx == 3)
+        {
+            std::cout << "node @ depth=11, " << "reach=" << reach << " cfr_reach=" << cfr_reach << " sigma[" << i << "]=" << action_node->sigma[i] 
+                        << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
+                        << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
+                        << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
+        }
+        */
     }
     return utility;
 }
@@ -80,8 +144,8 @@ inline void CFR_Trainer::update_sigma_recursive(TreeNode* node)
 
 inline void CFR_Trainer::update_sigma(ActionNode* node)
 {
-    float regret_sum = std::accumulate(node->cumulative_cfr_regret.begin(), node->cumulative_cfr_regret.end(), 0, 
-                        [](int first, int second)
+    float regret_sum = std::accumulate(node->cumulative_cfr_regret.begin(), node->cumulative_cfr_regret.end(), 0.0f, 
+                        [](float first, float second)
                         {
                             return first + (second > 0 ? second : 0);
                         });
@@ -90,13 +154,19 @@ inline void CFR_Trainer::update_sigma(ActionNode* node)
     for (int i = 0; i < num_actions; i ++)
     {
         node->sigma[i] = regret_sum > 0 ?
-                         std::max(node->cumulative_cfr_regret[i], 1E-10f) / regret_sum :
+                         std::max(node->cumulative_cfr_regret[i], 0.0f) / regret_sum :
                          1.0 / num_actions;
-        // if (node->sigma[i] <= 0)
+
+        /* tentative              
+        if (node->sigma[i] == 0) node->sigma[i] = 0.01f;
+        */
+        if (node->sigma[i] == 0) node->sigma[i] = 0.01f;
+        // if (node->sigma[i] < 0 || node->sigma[i] > 1)
         // {
-        //     std::cout << "regret_sum=" << regret_sum << ", cumulative_cfr_regret[i]=" << node->cumulative_cfr_regret[i] << "\n";
-        //     assert(node->sigma[i] > 0);
+        //     UTILS::print_vec<float>(node->cumulative_cfr_regret, std::cout);
+        //     std::cout << "sigma=" << node->sigma[i] << " regret_sum=" << regret_sum << " cumulative_cfr_regret[i]=" << node->cumulative_cfr_regret[i] << "\n";
         // }
+        assert(node->sigma[i] >= 0 && node->sigma[i] <= 1);
     }
 }
 
@@ -142,9 +212,11 @@ void CFR_Trainer::train(int iteration)
 {
     for (int i = 0; i < iteration; i ++)
     {
+        // std::cout << "iteration: " << i << std::endl;
         cfr_utility_recursive(this->tree.root, 1, 1);
 
         update_sigma_recursive(this->tree.root);
+        
     }
 }
 
