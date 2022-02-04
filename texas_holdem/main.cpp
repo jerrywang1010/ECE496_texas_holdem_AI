@@ -42,7 +42,8 @@ int main()
     // Hand deck = {1,5,9,13,17,21,25,29,37};
 
     std::clock_t t_start = std::clock();
-    Hand deck = {51,50,1,5,16,21,26,29,30};
+    // Hand deck = {51,50,1,5,16,21,26,29,30};
+    Hand deck = {1,5,6,10,14,16,21,26,29};
     GameTree tree;
     tree.build_tree(deck);
     std::clock_t t_end = std::clock();
@@ -51,7 +52,7 @@ int main()
 
     t_start = std::clock();
     CFR_Trainer trainer(tree);
-    trainer.train(100);
+    trainer.train(100000);
     trainer.compute_nash_eq();
     t_end = std::clock();
     std::cout << "CFR Trainer took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
