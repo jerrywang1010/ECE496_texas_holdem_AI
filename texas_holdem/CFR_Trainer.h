@@ -1,5 +1,9 @@
 #pragma once
 #include "gametree.h"
+#include <C:\boost\include\boost-1_77\boost\unordered_map.hpp>
+
+
+typedef boost::unordered_map<Infoset, Infoset_value> InfosetMap;
 
 class CFR_Trainer
 {
@@ -13,6 +17,7 @@ private:
     void compute_nash_eq_recursive(TreeNode* node);
 
 public:
+    InfosetMap infoset_map;
     CFR_Trainer(GameTree& tree) : tree(tree) { trainer_init(); }
     void train(int iteration = 1);
     void compute_nash_eq();
