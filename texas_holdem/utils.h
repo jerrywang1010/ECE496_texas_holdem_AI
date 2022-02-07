@@ -34,8 +34,8 @@ const std::string s[] =
     u8"└─────────┘"
 };
 
-const static std::unordered_map<unsigned, std::string> suits ( { {0, "Spade"}, {1, "Heart"}, {2, "club"}, {3, "Diamond"} } );
-// const static std::unordered_map<unsigned, std::string> suits ( { {0, u8"♠"}, {1, u8"♥"}, {2, u8"♣"}, {3, u8"♦"} } );
+// const static std::unordered_map<unsigned, std::string> suits ( { {0, "Spade"}, {1, "Heart"}, {2, "club"}, {3, "Diamond"} } );
+const static std::unordered_map<unsigned, std::string> suits ( { {0, u8"♠"}, {1, u8"♥"}, {2, u8"♣"}, {3, u8"♦"} } );
 const static std::unordered_map<unsigned, std::string> ranks ( { {1, "A "}, {2, "2 "}, {3, "3 "}, {4, "4 "}, {5, "5 "}, {6, "6 "}, {7, "7 "}, 
                                                                  {8, "8 "}, {9, "9 "}, {10, "10"}, {11, "J "}, {12, "Q "}, {13, "K "} } );
 // const static std::unordered_map<std::string, unsigned> suits_idx ( { {"spade", 0}, {"heart", 1}, {"club", 2}, {"diamond", 3} } );
@@ -128,12 +128,12 @@ static inline void print_card(Card card, std::ostream& s)
         rank -= 13;
     }
     std::string suit = suits.at(card % 4);
-    // s << "rank=" << rank << " ,suit=" << boost::format("%1%") % suit;
-    s << suit << " " << rank;
+    s << "rank=" << rank << " ,suit=" << boost::format("%1%") % suit;
+    // s << suit << " " << rank;
 }
 
 
-// print num cards in encoded hand h, h can be 32 bits unsigned or 16 bits unsigned
+// print cards in encoded hand h, h can be 32 bits unsigned or 16 bits unsigned
 template <typename T>
 static inline void print_hand(T h, std::ostream& s, int num)
 {
