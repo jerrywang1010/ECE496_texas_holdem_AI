@@ -7,10 +7,13 @@ void GameTree::build_tree(Hand deck)
 {
     //create a chance node
     root = new ChanceNode();
-    root->infoset.committed = {2, 1};
-    Board_state args;
-    args.remaining_deck = deck;
 
+    Build_node_args args;
+    args.remaining_deck = deck;
+    args.committed = {2, 1};
+    args.active_player_idx = 0;
+    args.round_idx = 0;
+    // dynamic_cast<ChanceNode*>(root)->infoset_str = ";;";
     recursive_build_tree(root, args);
 }
 
@@ -145,7 +148,7 @@ std::vector<Hand> all_combination(Hand deck, int round_idx)
 }
 
 
-Node_type GameTree::get_next_node_type(TreeNode* parent, Action a)
+inline Node_type GameTree::get_next_node_type(TreeNode* parent, Action a, int round_idx, const std::vector<Action>& action_this_round)
 {
     if (a == Action::FOLD)
     {
@@ -156,19 +159,18 @@ Node_type GameTree::get_next_node_type(TreeNode* parent, Action a)
         // next node must be action
         return Node_type::Action;
     }
-    if (dynamic_cast<ActionNode*> (parent)->action_this_round == 0)
+    if (action_this_round.empty())
     {
         return Node_type::Action;
     }
     
-    uint8_t action_this_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
-    Action prev_action = GET_LAST_ACTION(action_this_round);
+    Action prev_action = action_this_round.back();
     
     // if prev act = B, then 'B(p)B(c)' or 'CB(p)B(c)' next must be next round 
     // if prev act = C, then 'C(p)C(c)' -> next round
     if (prev_action == Action::BET || (prev_action == Action::CHECK && a == Action::CHECK))
     {
-        if (parent->infoset.round_idx == 3)
+        if (round_idx == 3)
         {
             return Node_type::Showdown;
         }
@@ -183,6 +185,7 @@ Node_type GameTree::get_next_node_type(TreeNode* parent, Action a)
 }
 
 
+/*
 inline bool search_in_action_this_round(uint8_t action_this_round, Action target)
 {
     Action a = GET_LAST_ACTION(action_this_round);
@@ -194,15 +197,15 @@ inline bool search_in_action_this_round(uint8_t action_this_round, Action target
     }
     return false;
 }
+*/
 
-
-std::vector<Action> GameTree::get_legal_actions(TreeNode* parent)
+inline std::vector<Action> GameTree::get_legal_actions(TreeNode* parent, int round_idx, const std::vector<Action> & action_this_round)
 {
     // no need to worry sth like CBBB, this will be checked in the get_next_node_type
     // bet and fold must be legal action no matter what previous action is
     std::vector<Action> res{Action::BET, Action::FOLD};
     // if it's preflop round then no check are allowed
-    if (parent->infoset.round_idx > 0)
+    if (round_idx > 0)
     {
         if (parent->is_chance)
         {
@@ -215,8 +218,9 @@ std::vector<Action> GameTree::get_legal_actions(TreeNode* parent)
             // if added then
             // if (parent->action_type == Action::Bet);
             // else res.push_back(1);
-            uint8_t actions_in_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
-            if (!search_in_action_this_round(actions_in_round, Action::BET))
+            // uint8_t actions_in_round = dynamic_cast<ActionNode*> (parent)->action_this_round;
+            // if (!search_in_action_this_round(actions_in_round, Action::BET))
+            if (std::find(action_this_round.begin(), action_this_round.end(), Action::BET) == action_this_round.end())
             {
                 res.push_back(Action::CHECK);
             }
@@ -226,21 +230,25 @@ std::vector<Action> GameTree::get_legal_actions(TreeNode* parent)
 }
 
 
-void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
+
+// prepare build node args for calling build_x_node()
+void GameTree::recursive_build_tree(TreeNode* parent, Build_node_args args)
 {
     if (parent->is_chance)
     {
-        Board_state original_args = args;
-        std::vector<Hand> chance_events = all_combination(args.remaining_deck, parent->infoset.round_idx);
-        // std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, parent->infoset.round_idx, 1);
+        Build_node_args original_args = args;
+        // std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, args.round_idx, 1);
+        std::vector<Hand> chance_events = all_combination(args.remaining_deck, args.round_idx);
         dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / chance_events.size();
         // first action node in preflop round 
         // if it building the first action node in preflop round, let the first node temporarily hold all 4 private card
         // then the second action node query it's parent and get it's private hand and delete it in parents 
         for (Hand & h : chance_events)
-        {   
+        {
+            args.active_player_idx = 0;
+            args.action_this_round.clear();
             args.remove_from_deck(h);
-            if (parent->infoset.round_idx == 0)
+            if (args.round_idx == 0)
             {
                 args.add_to_private_card(h);
             }
@@ -250,50 +258,69 @@ void GameTree::recursive_build_tree(TreeNode* parent, Board_state args)
             }
             // build all action nodes result from a chance event
             ActionNode* node = new ActionNode();
-            node->build_action_node(parent, Action::INVALID, args);
+            node->build_action_node(parent, args);
             parent->children.push_back(node);
             recursive_build_tree(node, args);
             // back track
             args = original_args;
         }
     }
-
-    // parent must be an action node
+    // parent is action node
     else
     {
-        std::vector<Action> legal_actions = get_legal_actions(parent);
+        std::vector<Action> legal_actions = get_legal_actions(parent, args.round_idx, args.action_this_round);
+        Build_node_args original_args = args;
         for (Action a : legal_actions)
         {
             // 2 base case, no more recursive call after terminal nodes
-            // if playing a lead to terminal node
-            Node_type next_node = get_next_node_type(parent, a);
+            // if playing a leads to terminal node
+            Node_type next_node = get_next_node_type(parent, a, args.round_idx, args.action_this_round);
             if (next_node == Node_type::Terminal)
             {
+                assert(a == Action::FOLD);
                 TerminalNode* node = new TerminalNode();
-                node->build_terminal_node(parent, false, a, m_eval, args);
+                args.add_to_action_history(a);
+                args.add_to_action_this_round(a);
+                node->build_terminal_node(parent, false, m_eval, args);
                 parent->children.push_back(node);
             }
             else if (next_node == Node_type::Showdown)
             {
+                assert(a == Action::CHECK || a == Action::BET);
                 TerminalNode* node = new TerminalNode();
-                node->build_terminal_node(parent, true, a, m_eval, args);
+                args.add_to_action_history(a);
+                args.add_to_action_this_round(a);
+                if (a == Action::BET) args.commit(args.active_player_idx, 1);
+                node->build_terminal_node(parent, true, m_eval, args);
                 parent->children.push_back(node);
             }
 
             else if (next_node == Node_type::Chance)
             {
                 ChanceNode* node = new ChanceNode();
-                node->build_chance_node(parent, a, args);
+                args.round_idx += 1;
+                assert(a == Action::BET || a == Action::CHECK);
+                args.add_to_action_history(a);
+                args.add_to_action_this_round(a);
+                if (a == Action::BET) args.commit(args.active_player_idx, 1);
+                // active player does not matter here, since it will be reset to P0 at it's children
+                node->build_chance_node(parent, args);
                 parent->children.push_back(node);
                 recursive_build_tree(node, args);
             }
             else
             {
                 ActionNode* node = new ActionNode();
-                node->build_action_node(parent, a, args);
+                args.add_to_action_history(a);
+                args.add_to_action_this_round(a);
+                if (a == Action::BET) args.commit(args.active_player_idx, 1);
+                args.active_player_idx ^= 1;
+                node->build_action_node(parent, args);
                 parent->children.push_back(node);
                 recursive_build_tree(node, args);
             }
+            // reset build_node_args
+            args = original_args;
         }
     }
 }
