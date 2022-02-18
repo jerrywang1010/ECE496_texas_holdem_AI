@@ -8,7 +8,12 @@ class Game_state;
 
 class Game
 {
-public: 
+public:
+
+    std::vector<Player> m_players;
+
+    std::vector<int> winning_records {0, 0};
+
     Game ();
 
     inline Game_state* get_current_state() const {return m_state;}
@@ -21,23 +26,21 @@ public:
 
     bool round_finished() const;
 
-    void clear_round_action();
+    void add_to_action_this_round(Action a);
+
+    void clear_action_this_round();
 
     void clear_his_action();
 
     void update_his_action();
 
-    void clear_player_hand();
-
-    void clear_player_usable_cards();
+    void clear_player_cards();
 
     void display_community_cards();
 
     void add_to_community_cards(Hand h);
 
-    void clear_community_cards();
-
-    void print_round_action() const;
+    // void print_round_action() const;
 
     uint16_t get_hand_ranking(Hand hand) const;
 
@@ -48,9 +51,7 @@ public:
 private:
     Game_state* m_state;
 
-    std::vector<Player> m_players;
-
-    unsigned m_pot;
+    float m_pot;
 
     // because we only have 2 players, the index of the lossing player will be either 0 or 1
     int m_loss_player_idx;
