@@ -21,4 +21,5 @@ public:
     CFR_Trainer(GameTree& tree) : tree(tree) { trainer_init(); }
     void train(int iteration = 1);
     void compute_nash_eq();
+    float odds_calculator(const Hand& private_cards, const Hand& community_cards, const Hand& deck, int num_iter);
 };
