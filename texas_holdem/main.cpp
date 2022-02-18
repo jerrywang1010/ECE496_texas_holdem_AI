@@ -42,7 +42,6 @@ after game tree modification & infoset encoding:
     13 cards deck (100 combination) with infoset map 3035860992 bytes
 */
 
-
 int main()
 {
     // Set console code page to UTF-8 so console known how to interpret string data
@@ -74,13 +73,12 @@ int main()
     std::cout << inserted << std::endl;
     */
 
-    // Game game;
-    // game.run(10);
-    // Hand deck = {1,5,9,13,17,21,25,29,37};
+    // Ace to King
+    Hand deck = {1,5,9,13,17,21,25,29,33,37,41,45,49};
     // Hand deck = {10,2,3,40,5,6,27,38,9};
     // Hand deck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
     std::clock_t t_start = std::clock();
-    Hand deck = {51,50,1,5,16,21,26,29,30};
+    // Hand deck = {51,50,1,5,16,21,26,29,30, 31};
     UTILS::display_hand(deck);
 
     // Hand deck = {1,5,6,10,14,16,21,26,29};
@@ -92,7 +90,9 @@ int main()
 
     t_start = std::clock();
     CFR_Trainer trainer(tree);
-    trainer.train(50);
+
+    // make sure iteration >= 10
+    trainer.train(100);
     trainer.compute_nash_eq();
     t_end = std::clock();
     std::cout << "CFR Trainer took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
@@ -114,7 +114,21 @@ int main()
     std::cout << "total virtual memory used by constructing the tree=" << virtual_mem_size << std::endl;
     //
 
+    Game game;
+    // game.m_players = {Player(&trainer, "CFR_bot", 10), Player("Me", 10)};
 
+    // fixed_strat<0> = strat[bet, fold] (when check is not allowed)
+    // fixed_strat<1> = strat[bet, fold, check] (when check is allowed)
+    // fixed_strat fs = {{0.9f, 0.1f}, {0.8f, 0.1f, 0.1f}};
+    // game.m_players = {Player(&trainer, deck, "CFR_bot", 10000), Player(fs, "Aggressive_bot", 10000)};
+
+    fixed_strat fs = {{0.5f, 0.5f}, {1/3.0, 1/3.0, 1/3.0}};
+    game.m_players = {Player(&trainer, deck, "CFR_bot", 10000), Player(fs, "Random_bot", 10000)};
+    int games_num = 10000;
+    game.run(games_num);
+    std::cout << "CFR_bot winning rate: " << game.winning_records[0] / (double)games_num << std::endl;
+    
+    /*
     // Infoset i1 = {0x3, 0, 69};
     // Infoset i1 = {1023, 4282013, 69};
     // Infoset i1 = {0, 0, 3314};
@@ -170,6 +184,8 @@ int main()
     UTILS::print_vec<float>(trainer.infoset_map.at(i1).cumulative_sigma, std::cout);
     std::cout << "cumulative_cfr_regret=";
     UTILS::print_vec<float>(trainer.infoset_map.at(i1).cumulative_cfr_regret, std::cout);
+    */
+
     // std::ofstream output;
     // output.open("test.txt");
     // tree.print_tree(output);
