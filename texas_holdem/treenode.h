@@ -52,7 +52,7 @@ public:
     std::vector<TreeNode*> children;
     bool is_terminal = false;
     bool is_chance = false;
-    virtual void print_node(int depth, std::ostream& s) {};
+    virtual void print_node(int, std::ostream&) {};
 };
 
 
