@@ -76,7 +76,7 @@ void TerminalNode::print_node(int depth, std::ostream& s)
 // given build node args, calculate utility
 void TerminalNode::build_terminal_node(TreeNode* parent, bool is_showdown, const omp::HandEvaluator & m_eval, const Build_node_args & args)
 {
-
+    (void) parent;
     int active_player_idx = args.active_player_idx;
     // this->active_player_idx = active_player_idx;
 
@@ -172,7 +172,7 @@ void ActionNode::print_node(int depth, std::ostream& s)
     if (this->infoset.community_card != 0)
     {
         // 0x33CB1C2F is the largest possible community card = {51, 50, 49, 48, 47} in binary
-        assert(this->infoset.community_card >= 0 && this->infoset.community_card <= 0x33CB1C2F);
+        assert(this->infoset.community_card <= 0x33CB1C2F);
         s << "Community_card: ";
         // flop
         if (this->infoset.round_idx == 1) UTILS::print_hand<uint32_t>(this->infoset.community_card, s, 3);
@@ -209,6 +209,7 @@ void ActionNode::print_node(int depth, std::ostream& s)
 // given build node args, construct a infoset key string
 void ActionNode::build_action_node(TreeNode* parent, const Build_node_args & args)
 {
+    (void) parent;
     // pre flop round, P0 takes first 2 private card, P1 takes last 2 private card
     assert(args.private_card.size() == 4);
     Hand private_card = { args.private_card[2 * args.active_player_idx], args.private_card[2 * args.active_player_idx + 1] };
