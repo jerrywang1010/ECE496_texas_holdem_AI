@@ -2,6 +2,9 @@
 #include <stdint.h>
 #include "utils.h"
 #include <C:\boost\include\boost-1_77\boost\functional\hash.hpp>
+#include <C:\boost\include\boost-1_77\boost\archive\binary_iarchive.hpp>
+#include <C:\boost\include\boost-1_77\boost\archive\binary_oarchive.hpp>
+#include <C:\boost\include\boost-1_77\boost\serialization\vector.hpp>
 
 typedef struct Infoset
 {
@@ -25,6 +28,17 @@ typedef struct Infoset
                 (private_card   == other.private_card));
     }
     
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        (void) version;
+        ar & action_history;
+        ar & community_card;
+        ar & private_card;
+        ar & round_idx;
+        ar & active_player_idx;
+    }
+
 } Infoset;
 
 
@@ -54,6 +68,15 @@ typedef struct Infoset_value
     std::vector<float> sigma;
     std::vector<float> cumulative_sigma;
     std::vector<float> cumulative_cfr_regret;
+    
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        (void) version;
+        ar & sigma;
+        ar & cumulative_sigma;
+        ar & cumulative_cfr_regret;
+    }
 
     /*
     void add_to_action_history(Action a)
