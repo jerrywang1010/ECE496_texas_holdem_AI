@@ -1,7 +1,8 @@
 #include "player.h"
 #include "assert.h"
 #include <algorithm>
-
+#include <chrono>
+#include <random>
 
 /**
  * The function updates the balance of a player, if he wins or losses money
@@ -190,8 +191,10 @@ Action Player::get_action(bool allow_check) const
             // now finally we can convert it into a infomap key and lookup
             Infoset infoset = encode_infoset(p_cards, c_cards, up_to_date_action_history);
             assert(this->trainer != nullptr);
+
             if (trainer->infoset_map.find(infoset) != trainer->infoset_map.end())
             {
+                std::cout << "Found infoset_key\n";
                 debug_print("%s", "Found infoset_key\nstrat=");
                 std::vector<float> strat = trainer->infoset_map.at(infoset).sigma;
                 assert(strat.size() == 2 || strat.size() == 3);
@@ -200,18 +203,18 @@ Action Player::get_action(bool allow_check) const
             }
             else
             {
+                std::cout << "Infoset_key not found in map\n";
                 debug_print("%s\n", "infoset_key not found in map");
-                // std::cout << "infoset_key not found in map\n";
-                float win_rate = trainer->odds_calculator(this->private_cards, this->community_cards, this->deck, 50000);
-                assert(win_rate <= 1);
+                float b=0, c=0, f=0;
+                trainer->odds_calculator(this->private_cards, this->community_cards, this->deck, 50000, allow_check, b, c, f);
                 std::vector<float> strat;
                 if (allow_check)
                 {
-                    strat = {win_rate, 0, 1 - win_rate};
+                    strat = {b, f, c};
                 }
                 else
                 {
-                    strat = {win_rate, 1 - win_rate};
+                    strat = {b, f};
                 }
                 action = get_action_based_on_strat(strat);
             }
