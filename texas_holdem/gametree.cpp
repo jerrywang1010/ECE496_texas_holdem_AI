@@ -153,8 +153,8 @@ std::vector<Hand> all_combination(Hand deck, int round_idx, bool early_pruning=f
                 Hand vec = {partial_result[i][0], partial_result[i][1], partial_result_2[j][0], partial_result_2[j][1]};
                 combinations.push_back(vec);
             }
-        s.insert(partial_result[i][0]);
-        s.insert(partial_result[i][1]);
+            s.insert(partial_result[i][0]);
+            s.insert(partial_result[i][1]);
         }
     }
     // entering flop round, choose 3 community card
@@ -262,7 +262,7 @@ void GameTree::recursive_build_tree(TreeNode* parent, Build_node_args args)
     if (parent->is_chance)
     {
         Build_node_args original_args = args;
-        std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, args.round_idx, 500, true);
+        std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, args.round_idx, 1, true);
         // std::vector<Hand> chance_events = all_combination(args.remaining_deck, args.round_idx);
         dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / chance_events.size();
 
