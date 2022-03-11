@@ -10,7 +10,7 @@
 #include <stdexcept>
 #include <C:\boost\include\boost-1_77\boost\format.hpp>
 
-#define DEBUG 0
+#define DEBUG 1
 
 #define RESET "\033[0m"
 #define BLACK "\033[30m"     /* Black */
