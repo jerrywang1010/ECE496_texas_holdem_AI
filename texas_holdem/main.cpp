@@ -9,6 +9,10 @@
 #include "Psapi.h"
 #include "CFR_Trainer.h"
 #include <ctime>
+#include <C:\boost\include\boost-1_77\boost\serialization\boost_unordered_map.hpp>
+#include <C:\boost\include\boost-1_77\boost\range\irange.hpp>
+#include <C:\boost\include\boost-1_77\boost\range\algorithm_ext\push_back.hpp>
+
 
 /*
 memeory usage:
@@ -42,48 +46,93 @@ after game tree modification & infoset encoding:
     13 cards deck (100 combination) with infoset map 3035860992 bytes
 */
 
+
+void save_map(const InfosetMap& m, const std::string& file="map.bin")
+{
+    std::ofstream filestream(file);
+    boost::archive::binary_oarchive archive(filestream, boost::archive::no_codecvt);
+    archive << m;
+}
+
+
+void load_map(InfosetMap* m_ptr, const std::string& file="map.bin")
+{
+    std::ifstream filestream(file);
+    boost::archive::binary_iarchive archive(filestream, boost::archive::no_codecvt);
+
+    archive >> *m_ptr;
+}
+
+
 int main()
 {
     // Set console code page to UTF-8 so console known how to interpret string data
     SetConsoleOutputCP(CP_UTF8);
 
     /*
-    boost::unordered_map<Infoset, int> imap;
-    
+    // boost::unordered_map<int, std::vector<float>> m;
+    InfosetMap m;
     Infoset i1, i2;
-    i1.action_history = 2;
+    // fold
+    i1.action_history = 1;
+    // check
     i2.action_history = 2;
-    
-    i1.community_card = 11;
-    i2.community_card = 11;
-    
-    i1.private_card = 0;
-    i2.private_card = 0;
-    
-    bool inserted = false;
-    std::tie(std::ignore, inserted) = imap.insert({i1, 1});
-    std::cout << inserted << std::endl;
+    // 1, 1, 1
+    i1.community_card = 4161;
+    // 2, 2, 2
+    i2.community_card = 8322;
+    // 3, 3
+    i1.private_card = 195;
+    // 4, 4
+    i2.private_card = 260;
 
-    inserted = false;
-    std::tie(std::ignore, inserted) = imap.insert({i2, 1});
-    std::cout << inserted << std::endl;
+    i1.round_idx = 1;
+    i2.round_idx = 1;
 
-    inserted = false;
-    std::tie(std::ignore, inserted) = imap.insert({i1, 1});
-    std::cout << inserted << std::endl;
+    std::vector<float> v1 = {0.5, 0.5};
+    std::vector<float> v2 = {0.3, 0.3, 0.3};
+
+    Infoset_value iv1, iv2;
+    iv1.sigma = v1;
+    iv1.cumulative_sigma = v1;
+    iv1.cumulative_cfr_regret = v1;
+
+    iv2.sigma = v2;
+    iv2.cumulative_sigma = v2;
+    iv2.cumulative_cfr_regret = v2;
+    m.insert(std::make_pair(i1, iv1));
+    m.insert(std::make_pair(i2, iv2));
+
+    save_map(m);
+    m.clear();
+    std::cout << "map is cleared, size=" << m.size() << "\n";
+    load_map(&m);
+    std::cout << "map is loaded, size=" << m.size() << "\n";
+    for (const auto & kv : m)
+    {
+        std::string key = decode_infoset(kv.first);
+        std::cout << "key=" << key << ", sigma=";
+        UTILS::print_vec<float>(kv.second.sigma, std::cout);
+        std::cout << "cumulative_sigma=";
+        UTILS::print_vec<float>(kv.second.cumulative_sigma, std::cout);
+        std::cout << "cumulative_cfr_regret=";
+        UTILS::print_vec<float>(kv.second.cumulative_cfr_regret, std::cout);
+    }
+
     */
 
     // Ace to King
-    Hand deck = {1,5,9,13,17,21,25,29,33,37,41,45,49};
-    // Hand deck = {10,2,3,40,5,6,27,38,9};
-    // Hand deck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-    std::clock_t t_start = std::clock();
-    // Hand deck = {51,50,1,5,16,21,26,29,30, 31};
-    UTILS::display_hand(deck);
+    Hand training_deck = {1,5,9,13,17,21,25,29,33,37,41,45,49};
 
-    // Hand deck = {1,5,6,10,14,16,21,26,29};
+    // Ace to 9
+    // Hand training_deck = {1,5,9,13,17,21,25,29,33};
+    // Hand training_deck = {10,2,3,40,5,6,27,38,9};
+    // Hand training_deck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+    std::clock_t t_start = std::clock();
+    UTILS::display_hand(training_deck);
+
     GameTree tree;
-    tree.build_tree(deck);
+    tree.build_tree(training_deck);
     std::clock_t t_end = std::clock();
 
     std::cout << "Build tree took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
@@ -91,8 +140,7 @@ int main()
     t_start = std::clock();
     CFR_Trainer trainer(tree);
 
-    // make sure iteration >= 10
-    trainer.train(100);
+    trainer.train(0);
     trainer.compute_nash_eq();
     t_end = std::clock();
     std::cout << "CFR Trainer took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
@@ -114,8 +162,9 @@ int main()
     std::cout << "total virtual memory used by constructing the tree=" << virtual_mem_size << std::endl;
     //
 
-    Game game;
-    // game.m_players = {Player(&trainer, "CFR_bot", 10), Player("Me", 10)};
+    Hand playing_deck;
+    boost::push_back(playing_deck, boost::irange(0, 52));
+    Game game(playing_deck);
 
     // fixed_strat<0> = strat[bet, fold] (when check is not allowed)
     // fixed_strat<1> = strat[bet, fold, check] (when check is allowed)
@@ -123,10 +172,14 @@ int main()
     // game.m_players = {Player(&trainer, deck, "CFR_bot", 10000), Player(fs, "Aggressive_bot", 10000)};
 
     fixed_strat fs = {{0.5f, 0.5f}, {1/3.0, 1/3.0, 1/3.0}};
-    game.m_players = {Player(&trainer, deck, "CFR_bot", 10000), Player(fs, "Random_bot", 10000)};
+
+    // game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10000), Player(fs, "Random_bot", 10000)};
+    game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10), Player("Me", 10)};
+    // game.m_players = {Player(fs, "Random_bot", 10000), Player(&trainer, playing_deck, "CFR_bot", 10000)};
     int games_num = 10000;
     game.run(games_num);
-    std::cout << "CFR_bot winning rate: " << game.winning_records[0] / (double)games_num << std::endl;
+    std::cout << "Player 0 winning rate: " << game.winning_records[0] / (double)games_num << std::endl;
+    std::cout << "Player 1 winning rate: " << game.winning_records[1] / (double)games_num << std::endl;
     
     /*
     // Infoset i1 = {0x3, 0, 69};
