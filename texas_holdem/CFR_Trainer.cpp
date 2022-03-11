@@ -3,7 +3,7 @@
 #include <chrono>
 #include <random>
 
-float CFR_Trainer::odds_calculator(const Hand& private_cards, const Hand& community_cards, const Hand& deck, int num_iter)
+void CFR_Trainer::odds_calculator(const Hand& private_cards, const Hand& community_cards, const Hand& deck, int num_iter, bool allow_check, float& b, float& c, float& f)
 {
     // input: private cards, community cards, legal actions, deck size, num_iter
     Hand pools;
@@ -16,32 +16,58 @@ float CFR_Trainer::odds_calculator(const Hand& private_cards, const Hand& commun
         }
         pools.push_back(deck[i]);
     }
-
-
-    int win = 0;
-    int cnt = 1;
-    int tie = 0;
+    int cnt = 0;
+    int bet = 0;
+    int fold = 0;
+    int check = 0;
     omp::HandEvaluator m_eval = omp::HandEvaluator();
     for (int i = 0; i < num_iter; i ++)
     {
-        Hand hands;
-        hands.push_back(private_cards[0]);
-        hands.push_back(private_cards[1]);
+        Hand myhands = {private_cards[0], private_cards[1]};
+        Hand ophands;
         for (size_t j = 0; j < community_cards.size(); j ++)
         {
-            hands.push_back(community_cards[j]);
+            //hands.push_back(community_cards[j]);
+            myhands.push_back(community_cards[j]);
+            ophands.push_back(community_cards[j]);
         }
         unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
         std::shuffle(pools.begin(), pools.end(), std::default_random_engine(seed));
-        int hands_size = hands.size();
-        for (int k = 0; k < 9 - hands_size; k ++)
+        // win/lose for current status
+        int cur_situation = 0; // -1 lose, 0 draw, 1 win
+        int final_situation = 0;
+        if (community_cards.size() && community_cards.size() < 5)
         {
-            hands.push_back(pools[k]);
+            ophands.push_back(pools[0]);//op private1
+            ophands.push_back(pools[1]);//op private2
+             omp::Hand h = omp::Hand::empty();
+            for (Card card: myhands)
+            {
+                h += omp::Hand(card);
+            }
+            uint16_t myscore = m_eval.evaluate(h);
+            omp::Hand oph = omp::Hand::empty();
+            for (Card card: ophands)
+            {
+                oph += omp::Hand(card);
+            }
+            uint16_t opscore = m_eval.evaluate(oph);
+            if (myscore > opscore)
+            {
+                cur_situation = 1;
+            }
+            else if (myscore < opscore)
+            {
+                cur_situation = -1;
+            }
         }
-        Hand myhands = {hands[0], hands[1], hands[2], hands[3], hands[4], hands[5], hands[6]};
-        Hand ophands = {hands[7], hands[8], hands[2], hands[3], hands[4], hands[5], hands[6]};
-        //std::cout << hands[0] << " " << hands[1] << " " << hands[2] << " " << hands[3] << " " << hands[4] << " " << hands[5] << " " << hands[6] << std::endl;
-        //std::cout << hands[7] << " " << hands[8] << " " << hands[2] << " " << hands[3] << " " << hands[4] << " " << hands[5] << " " << hands[6] << std::endl;
+        int hands_size = myhands.size();
+        // get the rest of community cards
+        for (int k = 0; k < 7 - hands_size; k ++)
+        {
+            myhands.push_back(pools[k + 2]);
+            ophands.push_back(pools[k + 2]);
+        }
         omp::Hand h = omp::Hand::empty();
         for (Card card: myhands)
         {
@@ -56,18 +82,55 @@ float CFR_Trainer::odds_calculator(const Hand& private_cards, const Hand& commun
         uint16_t opscore = m_eval.evaluate(oph);
         if (myscore > opscore)
         {
-            win ++;
+            final_situation = 1;
         }
-        if (myscore == opscore)
+        if (myscore < opscore)
         {
-            tie ++;
+            final_situation = -1;
+        }
+        if (cur_situation == 1)
+        {
+            if (final_situation == 1)
+            {
+                bet ++;
+            }
+            else
+            {
+                check ++;
+            }
+        }
+        else if (cur_situation == -1)
+        {
+            if (final_situation == 1)
+            {
+                check ++;
+            }
+            else
+            {
+                fold ++;
+            }
+        }
+        else
+        {
+            if (final_situation == 1)
+            {
+                check ++;
+            }
+            else
+            {
+                fold ++;
+            }
         }
         cnt ++;
     }
-    debug_print("Odds_calculator sampling results: win=%d, tie=%d, loss=%d, total_sampling_count=%d\n", win, tie, cnt-win-tie, cnt);
-    float win_rate = win / (float)cnt;
-    debug_print("winning rate=%f\n", win_rate);
-    return win_rate;
+    debug_print("Odds_calculator sampling results: bet=%d, check=%d, fold=%d, total_sampling_count=%d\n", bet, check, fold, cnt);
+    b = bet / (float)cnt;
+    f = fold / (float)cnt;
+    c  = check / (float)cnt;
+    if (allow_check == false)
+    {
+        b = (bet + check) / (float)cnt;
+    }
 }
 
 
@@ -134,60 +197,6 @@ float CFR_Trainer::cfr_utility_recursive(TreeNode* node, float reach_0, float re
 
         v.cumulative_cfr_regret[i] += action_cfr_regret;
         v.cumulative_sigma[i] += reach * v.sigma[i];
-        
-        // if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 1023 && node->infoset.round_idx == 2 )
-        // {
-        //     std::cout << "node @ depth=8, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
-        //                 << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
-        // }
-        // if (action_node->active_player_idx == 0 && action_node->infoset.action_history == 4095 && action_node->infoset.round_idx == 3)
-        // {
-        //     std::cout << "node @ depth=10, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
-        //                 << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
-        // }
-        // if (action_node->active_player_idx == 0 && action_node->infoset.action_history == 0 && action_node->infoset.round_idx == 0)
-        // {
-        //     std::cout << "node @ depth=1, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i] << "\n";
-        // }
-        // if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 0x3 && action_node->infoset.round_idx == 0)
-        // {
-        //     std::cout << "node @ depth=2, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i] 
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i] << "\n";
-        // }
-        // if (action_node->active_player_idx == 0 && action_node->infoset.action_history == 15 && node->infoset.community_card == 66906)
-        // {
-        //     std::cout << "node @ depth=4, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i] << "\n";
-        // }
-        // if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 63 && node->infoset.community_card == 66906)
-        // {
-        //     std::cout << "node @ depth=5, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
-        //                 << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
-        // }
-        // if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 1023 && node->infoset.round_idx == 2 )
-        // {
-        //     std::cout << "node @ depth=8, " << "reach=" << reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
-        //                 << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
-        // }
-        // if (action_node->active_player_idx == 1 && action_node->infoset.action_history == 16383 && node->infoset.round_idx == 3)
-        // {
-        //     std::cout << "node @ depth=11, " << "reach=" << reach << " cfr_reach=" << cfr_reach << " sigma[" << i << "]=" << action_node->sigma[i] 
-        //                 << " cumulative_sigma[" << i << "]=" << action_node->cumulative_sigma[i]
-        //                 << " cumulative_cfr_regret[" << i << "]=" << action_node->cumulative_cfr_regret[i]
-        //                 << " children_state_utility[" << i << "]=" << children_state_utility[i] << " utility=" << utility << "\n";
-        // }
     }
     return utility;
 }
