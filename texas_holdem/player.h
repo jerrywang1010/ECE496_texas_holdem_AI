@@ -39,6 +39,8 @@ public:
     std::vector<Action> action_this_round;
 
     std::string player_name;
+    
+    omp::HandEvaluator m_eval = omp::HandEvaluator();
 
     Player (CFR_Trainer* trainer, Hand deck, std::string n, float b) : is_cfr_bot(true), trainer(std::move(trainer)), deck(std::move(deck)), m_balance(b), player_name(n) {}
 
@@ -51,6 +53,8 @@ public:
     Action get_action(bool allow_check=true) const;
 
     void display_private_cards();
+
+    std::vector<float> get_strategy(const Hand& private_hand, const Hand& community_cards, const std::string& action_history, bool allow_check);
 
     /*
     Hand get_private_cards() const;
