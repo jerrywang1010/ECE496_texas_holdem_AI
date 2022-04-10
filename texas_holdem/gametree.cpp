@@ -2,21 +2,22 @@
 #include "gametree.h"
 #include <set>
 
-
-void GameTree::build_tree(Hand deck)
-{
-    //create a chance node
-    root = new ChanceNode();
-
-    Build_node_args args;
-    args.remaining_deck = deck;
-    args.committed = {1, 2};
-    args.active_player_idx = 0;
-    args.round_idx = 0;
-    // dynamic_cast<ChanceNode*>(root)->infoset_str = ";;";
-    recursive_build_tree(root, args);
+bool evaluate_equity(int player_card_0, int player_card_1) {
+    // return true is unplayable or in any position
+    unsigned rank_0 = player_card_0 / 4 + 2;
+    if (rank_0 > 13)
+    {
+        rank_0 -= 13;
+    }
+    unsigned rank_1 = player_card_1 / 4 + 2;
+    if (rank_1 > 13)
+    {
+        rank_1 -= 13;
+    }
+    std::pair<int, int> player_hand = std::make_pair(rank_0, rank_1);
+    return (UTILS::any_position.find(player_hand) != UTILS::any_position.end() ||
+         UTILS::unplayable_hand.find(player_hand) != UTILS::unplayable_hand.end());
 }
-
 
 void combination_helper_with_limit(std::vector<Hand> & res, const Hand & deck, int data[], int start, int end, int index, int r, size_t limit)
 {
@@ -39,25 +40,6 @@ void combination_helper_with_limit(std::vector<Hand> & res, const Hand & deck, i
         combination_helper_with_limit(res, deck, data, i + 1, end, index + 1, r, limit);
     }
 }
-
-
-bool evaluate_equity(int player_card_0, int player_card_1) {
-    // return true is unplayable or in any position
-    unsigned rank_0 = player_card_0 / 4 + 2;
-    if (rank_0 > 13)
-    {
-        rank_0 -= 13;
-    }
-    unsigned rank_1 = player_card_1 / 4 + 2;
-    if (rank_1 > 13)
-    {
-        rank_1 -= 13;
-    }
-    std::pair<int, int> player_hand = std::make_pair(rank_0, rank_1);
-    return (UTILS::any_position.find(player_hand) != UTILS::any_position.end() ||
-         UTILS::unplayable_hand.find(player_hand) != UTILS::unplayable_hand.end());
-}
-
 
 std::vector<Hand> all_combination_with_limit(Hand deck, int round_idx, size_t limit, bool early_pruning=false)
 {
@@ -173,6 +155,27 @@ std::vector<Hand> all_combination(Hand deck, int round_idx, bool early_pruning=f
 }
 
 
+void GameTree::init_all_combo_first_round(Hand deck, bool early_pruning=false)
+{
+    this->all_combo_first_round = all_combination(deck, 0, early_pruning);
+}
+
+
+void GameTree::build_tree(Hand deck, size_t first_round_combination_start_idx, size_t interval)
+{
+    //create a chance node
+    root = new ChanceNode();
+
+    Build_node_args args;
+    args.remaining_deck = deck;
+    args.committed = {1, 2};
+    args.active_player_idx = 0;
+    args.round_idx = 0;
+    // dynamic_cast<ChanceNode*>(root)->infoset_str = ";;";
+    recursive_build_tree(root, args, first_round_combination_start_idx, interval);
+}
+
+
 inline Node_type GameTree::get_next_node_type(TreeNode* parent, Action a, int round_idx, const std::vector<Action>& action_this_round)
 {
     if (a == Action::FOLD)
@@ -257,15 +260,28 @@ inline std::vector<Action> GameTree::get_legal_actions(TreeNode* parent, int rou
 
 
 // prepare build node args for calling build_x_node()
-void GameTree::recursive_build_tree(TreeNode* parent, Build_node_args args)
+void GameTree::recursive_build_tree(TreeNode* parent, Build_node_args args, size_t first_round_combination_start_idx, size_t interval)
 {
     if (parent->is_chance)
     {
         Build_node_args original_args = args;
-        std::vector<Hand> chance_events = all_combination_with_limit(args.remaining_deck, args.round_idx, 1, true);
-        // std::vector<Hand> chance_events = all_combination(args.remaining_deck, args.round_idx);
-        dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / chance_events.size();
-
+        // slice the precomputed all_combination in first round
+        std::vector<Hand> chance_events;
+        if (args.round_idx == 0)
+        {
+            auto start = this->all_combo_first_round.begin() + first_round_combination_start_idx;
+            int count = first_round_combination_start_idx + interval > all_combo_first_round.size() ?
+                         all_combo_first_round.size() - first_round_combination_start_idx : interval;
+            std::copy_n(start, count, std::back_inserter(chance_events));
+            dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / this->all_combo_first_round.size();
+        }
+        else
+        {
+            // std::vector<H and> chance_events = all_combination_with_limit(args.remaining_deck, args.round_idx, 500, true);
+            chance_events = all_combination(args.remaining_deck, args.round_idx);
+            dynamic_cast<ChanceNode*> (parent)->chance_prob = 1.0f / chance_events.size();
+        }
+        
         // first action node in preflop round 
         // if it building the first action node in preflop round, let the first node temporarily hold all 4 private card
         // then the second action node query it's parent and get it's private hand and delete it in parents 
@@ -293,7 +309,7 @@ void GameTree::recursive_build_tree(TreeNode* parent, Build_node_args args)
             ActionNode* node = new ActionNode();
             node->build_action_node(parent, args);
             parent->children.push_back(node);
-            recursive_build_tree(node, args);
+            recursive_build_tree(node, args, first_round_combination_start_idx, interval);
             // back track
             args = original_args;
         }
@@ -339,7 +355,7 @@ void GameTree::recursive_build_tree(TreeNode* parent, Build_node_args args)
                 // active player does not matter here, since it will be reset to P0 at it's children
                 node->build_chance_node(parent, args);
                 parent->children.push_back(node);
-                recursive_build_tree(node, args);
+                recursive_build_tree(node, args, first_round_combination_start_idx, interval);
             }
             else
             {
@@ -350,7 +366,7 @@ void GameTree::recursive_build_tree(TreeNode* parent, Build_node_args args)
                 args.active_player_idx ^= 1;
                 node->build_action_node(parent, args);
                 parent->children.push_back(node);
-                recursive_build_tree(node, args);
+                recursive_build_tree(node, args, first_round_combination_start_idx, interval);
             }
             // reset build_node_args
             args = original_args;
@@ -396,3 +412,17 @@ void GameTree::print_tree(std::ostream& s)
     }
 }
 
+
+void recursive_free_tree_nodes(TreeNode* node)
+{
+    for (auto child : node->children)
+    {
+        recursive_free_tree_nodes(child);
+    }
+    delete(node);
+}
+
+void GameTree::free_tree_nodes()
+{
+    recursive_free_tree_nodes(this->root);
+}
