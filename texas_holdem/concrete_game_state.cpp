@@ -385,6 +385,8 @@ void Terminal::enter(Game* game)
     }
     std::cout << "Round: " << game->m_round_count << ", " << game->m_players[0].player_name << "'s balance=" 
         << game->m_players[0].m_balance << ", " << game->m_players[1].player_name << "'s balance=" << game->m_players[1].m_balance << std::endl;
+    // debug_print("Round: %u, %s's balance=%f, %s's balance=%f\n", game->m_round_count, game->m_players[0].player_name.c_str(), 
+    //             game->m_players[0].m_balance, game->m_players[1].player_name.c_str(), game->m_players[1].m_balance);
 
     debug_print("%s", "***************************************************************\n");
     debug_print(GREEN "Entering Terminal Round:\tpot=%f\n\n" RESET, game->m_pot);
