@@ -1,0 +1,4324 @@
+{
+	"strategies": [
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.9975, 0.0025]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.932816, 0.0671841]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.57362, 0.42638]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.9087, 0.0284, 0.0629]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.97238, 0.02762]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.57544, 0.42456]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.2852, 0.51764, 0.19716]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.83618, 0.12172, 0.0421]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.87658, 0.12342]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.486, 0.514]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.48874, 0.51126]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.83536, 0.12308, 0.04156]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.8818, 0.1182]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.46954, 0.53046]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.28588, 0.52486, 0.18926]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.83294, 0.1273, 0.03976]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.87344, 0.12656]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.48274, 0.51726]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.41884, 0.48696, 0.0942]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.86958, 0.08922, 0.0412]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.91816, 0.08184]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.5121, 0.4879]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.51356, 0.48644]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.86958, 0.08736, 0.04306]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.91614, 0.08386]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.52662, 0.47338]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.42914, 0.4819, 0.08896]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.87014, 0.0875, 0.04236]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.91226, 0.08774]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.51588, 0.48412]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.41644, 0.49124, 0.09232]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.8742, 0.08384, 0.04196]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.91054, 0.08946]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.52398, 0.47602]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.5047, 0.4953]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.87686, 0.08346, 0.03968]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.91498, 0.08502]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.51374, 0.48626]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.43134, 0.48376, 0.0849]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.86702, 0.09196, 0.04102]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.91188, 0.08812]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.50742, 0.49258]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.40436, 0.49978, 0.09586]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.86308, 0.09658, 0.04034]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.91588, 0.08412]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.50954, 0.49046]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.52606, 0.47394]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.873, 0.08542, 0.04158]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.90858, 0.09142]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.5152, 0.4848]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.42084, 0.49362, 0.08554]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.8568, 0.09248, 0.05072]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [18, 21],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.91912, 0.08088]
+},
+{
+	"deck": [43, 36, 18, 21, 20, 23, 29, 24, 30],
+	"private_hand": [36, 43],
+	"community_cards": [20, 23, 29, 30, 5],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.51376, 0.48624]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.985726, 0.014274]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.0437874, 0.956213]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.931406, 0.000845401, 0.0677485]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.80094, 0.02398, 0.17508]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.97634, 0.02366]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.993761, 0.00623926]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.10158, 0.7308, 0.16762]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.6606, 0.2129, 0.1265]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.78888, 0.21112]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.26744, 0.73256]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.26858, 0.73142]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.65532, 0.21768, 0.127]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.78662, 0.21338]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.26124, 0.73876]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.109, 0.7308, 0.1602]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.64798, 0.22096, 0.13106]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.78172, 0.21828]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.27186, 0.72814]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.19372, 0.74344, 0.06284]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.95308, 0.00086, 0.04606]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.99886, 0.00114]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.25784, 0.74216]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.26298, 0.73702]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.9536, 0.0011, 0.0453]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99858, 0.00142]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.26696, 0.73304]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.20106, 0.73508, 0.06386]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.9596, 0.00128, 0.03912]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99884, 0.00116]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.26044, 0.73956]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.19636, 0.73538, 0.06826]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.95604, 0.00104, 0.04292]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.99932, 0.00068]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.26744, 0.73256]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.26612, 0.73388]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.9474, 0.00078, 0.05182]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99872, 0.00128]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.26392, 0.73608]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.19642, 0.73814, 0.06544]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.95706, 0.00122, 0.04172]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99932, 0.00068]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.2593, 0.7407]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.19508, 0.73536, 0.06956]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.9577, 0.00074, 0.04156]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.99908, 0.00092]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.26492, 0.73508]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.26934, 0.73066]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.95412, 0.00106, 0.04482]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99894, 0.00106]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.2607, 0.7393]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.19726, 0.73946, 0.06328]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.96082, 0.00088, 0.0383]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [1, 16],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.9984, 0.0016]
+},
+{
+	"deck": [6, 35, 1, 16, 18, 0, 8, 27, 11],
+	"private_hand": [6, 35],
+	"community_cards": [0, 8, 18, 11, 19],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.25616, 0.74384]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.9975, 0.0025]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.317328, 0.682672]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.94766, 0.05234]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.69552, 0.000272629, 0.304207]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.505935, 0.494065]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.95166, 0.04834]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.83278, 0.1178, 0.04942]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.10186, 0.79638, 0.10176]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.20438, 0.79562]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.88196, 0.11804]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.86336, 0.13664]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.10754, 0.78388, 0.10858]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.1978, 0.8022]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.8747, 0.1253]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.821, 0.1299, 0.0491]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.09744, 0.79668, 0.10588]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.20478, 0.79522]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.86908, 0.13092]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.84776, 0.14628, 0.00596]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.07092, 0.88534, 0.04374]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.1109, 0.8891]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.85238, 0.14762]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.85096, 0.14904]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.07388, 0.88408, 0.04204]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.11238, 0.88762]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.85136, 0.14864]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.84634, 0.1474, 0.00626]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.06938, 0.88298, 0.04764]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.1208, 0.8792]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.85198, 0.14802]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.85028, 0.14466, 0.00506]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.0747, 0.87734, 0.04796]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.12088, 0.87912]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.84308, 0.15692]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.85312, 0.14688]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.06924, 0.88676, 0.044]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.12314, 0.87686]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.85006, 0.14994]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.84892, 0.14402, 0.00706]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.0722, 0.88216, 0.04564]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.11326, 0.88674]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.83584, 0.16416]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.8472, 0.14742, 0.00538]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.07334, 0.87914, 0.04752]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.11912, 0.88088]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.85492, 0.14508]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.8458, 0.1542]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.07576, 0.87686, 0.04738]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.12142, 0.87858]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.8498, 0.1502]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.84116, 0.15302, 0.00582]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.07498, 0.88592, 0.0391]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [0, 28],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.11868, 0.88132]
+},
+{
+	"deck": [29, 51, 0, 28, 48, 25, 13, 46, 15],
+	"private_hand": [29, 51],
+	"community_cards": [13, 25, 48, 15, 4],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.84738, 0.15262]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.0224934, 0.977507]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.999678, 0.000322158]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.638047, 0.0370479, 0.324905]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.280279, 0.000180346, 0.71954]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.949765, 0.0502347]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.942986, 0.0570135]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.685312, 0.038009, 0.276679]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.64566, 0.25388, 0.10046]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.75384, 0.24616]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.931312, 0.0686877]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.709278, 0.0193549, 0.271368]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.65488, 0.24578, 0.09934]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.75672, 0.24328]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.964338, 0.0356617]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.708369, 0.0201535, 0.271478]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.65102, 0.24752, 0.10146]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.76138, 0.23862]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.962882, 0.0371182]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.58316, 0.0457918, 0.371048]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.65386, 0.3399, 0.00624]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.66278, 0.33722]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.938294, 0.061706]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.696827, 0.0184875, 0.284685]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.65646, 0.33832, 0.00522]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.65542, 0.34458]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.96753, 0.03247]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.602024, 0.0245846, 0.373391]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.64278, 0.35146, 0.00576]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.66726, 0.33274]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.967079, 0.0329206]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.591367, 0.0237745, 0.384858]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.65518, 0.33848, 0.00634]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.66312, 0.33688]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.969113, 0.0308873]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.668615, 0.00909606, 0.322289]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.65988, 0.33518, 0.00494]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.66884, 0.33116]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.985888, 0.0141117]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.553887, 0.0123268, 0.433786]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.67354, 0.32054, 0.00592]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.66626, 0.33374]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.985792, 0.0142084]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.565064, 0.0247455, 0.41019]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.65286, 0.34208, 0.00506]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.65478, 0.34522]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.969837, 0.0301634]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.61882, 0.00948353, 0.371696]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.65342, 0.34016, 0.00642]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.6598, 0.3402]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.987243, 0.0127571]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.468623, 0.0128497, 0.518527]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.65888, 0.33484, 0.00628]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [33, 36],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.66042, 0.33958]
+},
+{
+	"deck": [3, 31, 33, 36, 50, 45, 5, 49, 32],
+	"private_hand": [3, 31],
+	"community_cards": [5, 45, 50, 32, 17],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.987609, 0.0123906]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.496555, 0.503445]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.999678, 0.000322171]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.676399, 0.00167826, 0.321923]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.90448, 0.00866, 0.08686]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.99134, 0.00866]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.688578, 0.311422]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.405214, 0.00258359, 0.592202]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.90536, 0.02856, 0.06608]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.96998, 0.03002]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.449543, 0.550457]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.353575, 0.00495715, 0.641468]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.90538, 0.03234, 0.06228]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.9696, 0.0304]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.431103, 0.568897]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.296658, 0.00126184, 0.70208]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.90618, 0.02986, 0.06396]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.96982, 0.03018]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.87498, 0.12502]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.21776, 0.70076, 0.08148]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.99394, 0.00408, 0.00198]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.99536, 0.00464]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.28412, 0.71588]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.29636, 0.70364]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.99468, 0.00388, 0.00144]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99578, 0.00422]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.28832, 0.71168]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.22324, 0.70908, 0.06768]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.99444, 0.00376, 0.0018]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99614, 0.00386]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.29302, 0.70698]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.22276, 0.70938, 0.06786]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.9931, 0.00424, 0.00266]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.99592, 0.00408]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.30092, 0.69908]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.29374, 0.70626]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.9945, 0.00346, 0.00204]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99556, 0.00444]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.289, 0.711]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.22666, 0.70282, 0.07052]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.9952, 0.00326, 0.00154]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.996, 0.004]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.29576, 0.70424]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.21164, 0.7183, 0.07006]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.99362, 0.00432, 0.00206]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.9956, 0.0044]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.29148, 0.70852]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.29694, 0.70306]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.99392, 0.00408, 0.002]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99506, 0.00494]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.29176, 0.70824]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.21302, 0.71934, 0.06764]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.99498, 0.00362, 0.0014]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [33, 51],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99524, 0.00476]
+},
+{
+	"deck": [7, 29, 33, 51, 32, 1, 48, 31, 46],
+	"private_hand": [7, 29],
+	"community_cards": [1, 32, 48, 46, 35],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.29458, 0.70542]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.997998, 0.0020025]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.999678, 0.000322048]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.75836, 0.24164]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.997334, 0.000150387, 0.0025152]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.999774, 0.000225581]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.75354, 0.24646]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.61034, 0.22742, 0.16224]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.37916, 0.47774, 0.1431]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.52468, 0.47532]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.76882, 0.23118]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.76728, 0.23272]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.377, 0.478, 0.145]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.5228, 0.4772]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.7688, 0.2312]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.60338, 0.23688, 0.15974]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.38014, 0.4741, 0.14576]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.52708, 0.47292]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.76344, 0.23656]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.68176, 0.3124, 0.00584]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.5594, 0.43634, 0.00426]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.56506, 0.43494]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.69386, 0.30614]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.67086, 0.32914]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.54804, 0.4466, 0.00536]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.55756, 0.44244]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.67834, 0.32166]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.66682, 0.32576, 0.00742]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.56558, 0.43012, 0.0043]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.55544, 0.44456]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.68586, 0.31414]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.6676, 0.3249, 0.0075]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.5576, 0.43788, 0.00452]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.55384, 0.44616]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.67872, 0.32128]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.68512, 0.31488]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.55866, 0.43726, 0.00408]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.56588, 0.43412]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.68388, 0.31612]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.67142, 0.32276, 0.00582]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.54742, 0.4473, 0.00528]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.5684, 0.4316]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.6874, 0.3126]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.68074, 0.3146, 0.00466]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.54612, 0.44804, 0.00584]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.56558, 0.43442]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.67986, 0.32014]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.68078, 0.31922]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.56034, 0.43428, 0.00538]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.55798, 0.44202]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.6845, 0.3155]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.67634, 0.31866, 0.005]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.5577, 0.43594, 0.00636]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [5, 45],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.5589, 0.4411]
+},
+{
+	"deck": [16, 38, 45, 5, 49, 18, 22, 3, 50],
+	"private_hand": [16, 38],
+	"community_cards": [18, 22, 49, 50, 4],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.67724, 0.32276]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.991953, 0.00804668]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.999723, 0.000276563]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.86725, 0.000840093, 0.13191]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.557037, 0.000120526, 0.442842]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.720431, 0.279569]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.996816, 0.00318436]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.965027, 0.00212291, 0.0328504]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.0115636, 0.000118305, 0.988318]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.598013, 0.401987]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.967688, 0.0323117]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.979465, 0.000322895, 0.0202117]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.707059, 0.000100413, 0.292841]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.910861, 0.0891392]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.992012, 0.00798781]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.832678, 0.00106485, 0.166257]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.568727, 9.76255e-05, 0.431176]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.731653, 0.268347]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.996798, 0.00320242]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.770419, 0.0215411, 0.20804]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.170117, 0.000240859, 0.829642]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.744505, 0.255495]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.948228, 0.0517716]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.50565, 0.000733284, 0.493616]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [3.60545e-05, 3.60545e-05, 0.999928]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.82909, 0.17091]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.999257, 0.000742767]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.615063, 0.0111302, 0.373807]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.333333, 0.333333, 0.333333]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.5, 0.5]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.985112, 0.0148876]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.973834, 0.00532519, 0.0208404]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.905433, 0.000341539, 0.0942257]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.999488, 0.000512309]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.872238, 0.127762]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.947745, 0.000109888, 0.0521452]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.000406889, 0.000406889, 0.999186]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.642783, 0.357217]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.998946, 0.00105367]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.547651, 0.00268404, 0.449665]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.025031, 0.000555747, 0.974413]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.988945, 0.0110551]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.997015, 0.00298449]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.572977, 0.00213495, 0.424888]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [6.82611e-05, 6.82611e-05, 0.999863]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.967368, 0.0326321]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.997488, 0.00251237]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.93135, 0.000426276, 0.0682238]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.00245356, 0.00111071, 0.996436]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.419446, 0.580554]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.996876, 0.0031241]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.165508, 0.0010709, 0.833421]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.0103005, 0.00189229, 0.987807]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [30, 34],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.763013, 0.236987]
+},
+{
+	"deck": [36, 9, 34, 30, 6, 21, 48, 26, 43],
+	"private_hand": [9, 36],
+	"community_cards": [6, 21, 48, 43, 3],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.999358, 0.000642475]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.921876, 0.0781244]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.999678, 0.000322177]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.9884, 0.0116]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.88038, 0.000121214, 0.119499]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.999818, 0.000181821]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.9868, 0.0132]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.81078, 0.06938, 0.11984]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.988423, 0.000463579, 0.0111139]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.999305, 0.000695369]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.92888, 0.07112]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.92488, 0.07512]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.942186, 8.0564e-05, 0.0577335]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.999879, 0.000120846]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.93292, 0.06708]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.81264, 0.06954, 0.11782]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.842664, 6.07469e-05, 0.157275]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.999909, 9.11204e-05]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.9312, 0.0688]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.8846, 0.1116, 0.0038]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.561497, 0.0139039, 0.424599]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.979144, 0.0208559]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.88732, 0.11268]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.89144, 0.10856]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.988223, 0.000119828, 0.011657]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99982, 0.000179743]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.8886, 0.1114]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.88562, 0.11164, 0.00274]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.99072, 8.03281e-05, 0.00919959]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99988, 0.000120492]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.8916, 0.1084]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.88744, 0.1097, 0.00286]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.998881, 0.00023537, 0.000883885]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.999647, 0.000353055]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.8864, 0.1136]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.8877, 0.1123]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.839958, 2.84488e-05, 0.160013]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.973975, 0.0260252]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.88556, 0.11444]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.89108, 0.1048, 0.00412]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.965972, 2.06343e-05, 0.0340071]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.906996, 0.0930037]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.8887, 0.1113]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.8835, 0.11196, 0.00454]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.999663, 6.92867e-05, 0.000268091]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.999896, 0.00010393]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.88758, 0.11242]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.88862, 0.11138]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.773592, 2.25288e-05, 0.226385]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.999966, 3.37932e-05]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.88868, 0.11132]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.89046, 0.10578, 0.00376]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.949433, 1.9171e-05, 0.0505482]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [10, 47],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.999971, 2.87565e-05]
+},
+{
+	"deck": [2, 33, 47, 10, 21, 32, 1, 49, 25],
+	"private_hand": [2, 33],
+	"community_cards": [1, 21, 32, 25, 14],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.88772, 0.11228]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.9975, 0.0025]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.999678, 0.000322163]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.791528, 0.000835423, 0.207636]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.757087, 0.000150369, 0.242762]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.912194, 0.0878057]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.997988, 0.00201175]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.992279, 0.00134116, 0.0063795]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.197064, 0.000344858, 0.802591]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.300432, 0.699568]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.894885, 0.105115]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.997234, 0.000351819, 0.00241463]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.156386, 8.75246e-05, 0.843526]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.522267, 0.477733]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.927148, 0.0728516]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.775838, 0.000671932, 0.22349]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.151596, 6.32581e-05, 0.848341]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.190419, 0.809581]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.998497, 0.00150327]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.613018, 0.0700765, 0.316905]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.98558, 0.01442, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.98616, 0.01384]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.889436, 0.110564]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.993851, 0.000450532, 0.00569869]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.98706, 0.01294, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.98484, 0.01516]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.960471, 0.0395294]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.705003, 0.039154, 0.255843]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.98568, 0.01432, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.98718, 0.01282]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.923481, 0.0765194]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.516962, 0.0485677, 0.43447]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.98562, 0.01438, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.98406, 0.01594]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.944107, 0.055893]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.974024, 0.000117598, 0.0258583]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.98702, 0.01298, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.98672, 0.01328]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.997726, 0.00227389]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.651859, 0.026192, 0.321949]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.98638, 0.01362, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.98702, 0.01298]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.959323, 0.0406772]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.724887, 0.00100218, 0.274111]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.98764, 0.01236, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.98416, 0.01584]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.998172, 0.00182806]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.275, 0.000288689, 0.724712]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.98722, 0.01278, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.98798, 0.01202]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.999801, 0.000199175]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.00402248, 0.000501845, 0.995476]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.98812, 0.01188, 0]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [32, 40],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.98634, 0.01366]
+},
+{
+	"deck": [17, 44, 40, 32, 12, 4, 37, 34, 9],
+	"private_hand": [17, 44],
+	"community_cards": [4, 12, 37, 9, 24],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.999748, 0.000252063]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": "null",
+	"action_history": "null",
+	"active_player_idx": 0,
+	"strategy": [0.985726, 0.014274]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": "null",
+	"action_history": "B",
+	"active_player_idx": 1,
+	"strategy": [0.999678, 0.000322169]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47],
+	"action_history": "BB",
+	"active_player_idx": 0,
+	"strategy": [0.603989, 0.000845401, 0.395165]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47],
+	"action_history": "BBC",
+	"active_player_idx": 1,
+	"strategy": [0.759996, 0.000180788, 0.239823]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47],
+	"action_history": "BBB",
+	"active_player_idx": 1,
+	"strategy": [0.999729, 0.00027118]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47],
+	"action_history": "BBCB",
+	"active_player_idx": 0,
+	"strategy": [0.608577, 0.391423]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCC",
+	"active_player_idx": 0,
+	"strategy": [0.279691, 0.00940698, 0.710902]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.772449, 0.000425461, 0.227125]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.999362, 0.000638192]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.744924, 0.255076]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBBB",
+	"active_player_idx": 0,
+	"strategy": [0.394019, 0.000466563, 0.605514]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.772165, 0.000120292, 0.227715]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.99982, 0.000180438]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.651756, 0.348244]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.258424, 0.000585899, 0.74099]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.908212, 9.87934e-05, 0.0916896]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.999852, 0.00014819]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49],
+	"action_history": "BBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.805109, 0.194891]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCC",
+	"active_player_idx": 0,
+	"strategy": [0.2188, 0.7099, 0.0713]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCCC",
+	"active_player_idx": 1,
+	"strategy": [0.31208, 0.6137, 0.07422]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCCB",
+	"active_player_idx": 1,
+	"strategy": [0.38194, 0.61806]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.29352, 0.70648]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.29106, 0.70894]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.31888, 0.60828, 0.07284]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.39494, 0.60506]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.28584, 0.71416]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCBB",
+	"active_player_idx": 0,
+	"strategy": [0.21874, 0.7073, 0.07396]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.30708, 0.61978, 0.07314]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.38298, 0.61702]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCCCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.30072, 0.69928]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.22934, 0.70268, 0.06798]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.31036, 0.61624, 0.0734]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.38988, 0.61012]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.29228, 0.70772]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.28672, 0.71328]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.3109, 0.61576, 0.07334]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.38904, 0.61096]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.2916, 0.7084]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.22262, 0.70546, 0.07192]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.31344, 0.62144, 0.06512]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.38754, 0.61246]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.3028, 0.6972]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCC",
+	"active_player_idx": 0,
+	"strategy": [0.22518, 0.70776, 0.06706]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCCC",
+	"active_player_idx": 1,
+	"strategy": [0.30918, 0.62452, 0.0663]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCCB",
+	"active_player_idx": 1,
+	"strategy": [0.38494, 0.61506]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCCCB",
+	"active_player_idx": 0,
+	"strategy": [0.27736, 0.72264]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBBB",
+	"active_player_idx": 0,
+	"strategy": [0.29422, 0.70578]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBBBC",
+	"active_player_idx": 1,
+	"strategy": [0.3167, 0.61378, 0.06952]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBBBB",
+	"active_player_idx": 1,
+	"strategy": [0.39044, 0.60956]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.2873, 0.7127]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCBB",
+	"active_player_idx": 0,
+	"strategy": [0.23228, 0.69942, 0.0683]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCBBC",
+	"active_player_idx": 1,
+	"strategy": [0.31106, 0.6209, 0.06804]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [11, 38],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCBBB",
+	"active_player_idx": 1,
+	"strategy": [0.39228, 0.60772]
+},
+{
+	"deck": [4, 33, 38, 11, 3, 47, 30, 23, 49],
+	"private_hand": [4, 33],
+	"community_cards": [3, 30, 47, 49, 46],
+	"action_history": "BBCBBCBBCB",
+	"active_player_idx": 0,
+	"strategy": [0.279, 0.721]
+},
+]
+}
