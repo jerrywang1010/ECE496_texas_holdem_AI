@@ -53,6 +53,7 @@ public:
     bool is_terminal = false;
     bool is_chance = false;
     virtual void print_node(int, std::ostream&) {};
+    virtual ~TreeNode() {};
 };
 
 
@@ -67,6 +68,7 @@ public:
     ChanceNode() {is_chance = true;}
     void build_chance_node(TreeNode* parent, const Build_node_args & args);
     void print_node(int depth, std::ostream& s) override;
+    virtual ~ChanceNode() {}; 
 };
 
 
@@ -84,6 +86,7 @@ public:
     ActionNode() {}
     void build_action_node(TreeNode* parent, const Build_node_args & args);
     void print_node(int depth, std::ostream& s) override;
+    virtual ~ActionNode() {};
 };
 
 
@@ -100,4 +103,5 @@ public:
     TerminalNode() {is_terminal = true;}
     void build_terminal_node(TreeNode* parent, bool is_showdown, const omp::HandEvaluator & m_eval, const Build_node_args & args);
     void print_node(int depth, std::ostream& s) override;
+    virtual ~TerminalNode() {};
 };
