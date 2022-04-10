@@ -4,6 +4,8 @@
 #include <chrono>
 #include <random>
 
+#define USE_STRAT_MAPPING 1
+
 /**
  * The function updates the balance of a player, if he wins or losses money
  *
@@ -141,7 +143,11 @@ inline Action get_action_based_on_strat(std::vector<float>& strat)
         case 1 : return Action::FOLD;
         case 2 : return Action::CHECK;
         
-        default : return Action::INVALID;
+        default : 
+            std::cout << "Returning invalid action, strat=\n";
+            UTILS::print_vec<float>(strat, std::cout);
+            std::cout << "r=" << r << ", i=" << i << "\n";
+            return Action::INVALID;
     }
 }
 
@@ -178,10 +184,26 @@ Action Player::get_action(bool allow_check) const
             if (!c_cards.empty())
             {
                 assert(c_cards.size() >= 3);
+                // if we want to ignore suits and map strategy to 52 cards deck, perform the translation here
+                if (USE_STRAT_MAPPING)
+                {
+                    for (auto & card : c_cards)
+                    {
+                        // add 1 because the trained strategy we currently have are based on {1, 5, 9, ...}
+                        card = ((card >> 2) << 2) + 1;
+                    }
+                }
                 std::sort(c_cards.begin(), c_cards.begin() + 3);
             }
             auto p_cards = this->private_cards;
             assert(p_cards.size() == 2);
+            if (USE_STRAT_MAPPING)
+            {
+                for (auto & card : p_cards)
+                {
+                    card = ((card >> 2) << 2) + 1;
+                }
+            }
             std::sort(p_cards.begin(), p_cards.end());
 
             // because action_history only stores action at the end of the previous round, there might be new actions performed in this round
@@ -192,21 +214,75 @@ Action Player::get_action(bool allow_check) const
             Infoset infoset = encode_infoset(p_cards, c_cards, up_to_date_action_history);
             assert(this->trainer != nullptr);
 
-            if (trainer->infoset_map.find(infoset) != trainer->infoset_map.end())
+            // check for flush, and give it to the odds calculator because CFR trainder can't handle that
+            bool is_flush = false;
+            if (USE_STRAT_MAPPING && !c_cards.empty())
+            {
+                omp::Hand h = omp::Hand::empty();
+                for (const auto & card : this->private_cards)
+                {
+                    h += omp::Hand(card);
+                }
+                for (const auto & card : this->community_cards)
+                {
+                    h += omp::Hand(card);
+                }
+                uint16_t score = m_eval.evaluate(h);
+                if (UTILS::hand_ranking.at(score / 4096) == "Flush")
+                {
+                    is_flush = true;
+                    debug_print("%s\n", "original cards form a flush");
+                }
+            }
+            if (!is_flush && trainer->infoset_map.find(infoset) != trainer->infoset_map.end())
             {
                 std::cout << "Found infoset_key\n";
-                debug_print("%s", "Found infoset_key\nstrat=");
+                debug_print("%s", "Found infoset_key\n");
                 std::vector<float> strat = trainer->infoset_map.at(infoset).sigma;
                 assert(strat.size() == 2 || strat.size() == 3);
-                if (DEBUG) UTILS::print_vec<float>(strat, std::cout);
+                if (DEBUG) 
+                {
+                    debug_print("%s\n", "CFR_strat:");
+                    UTILS::print_vec<float>(strat, std::cout);
+                }
                 action = get_action_based_on_strat(strat);
+
+                // experimenting, if action is fold, double check with the odds calculator
+                if (action == Action::FOLD)
+                {
+                    float b=0, c=0, f=0;
+                    trainer->odds_calculator(this->m_eval, this->private_cards, this->community_cards, this->deck, 50000, allow_check, b, c, f);
+                    std::vector<float> odds_calculator_strat;
+                    if (allow_check)
+                    {
+                        odds_calculator_strat = {b, f, c};
+                    }
+                    else
+                    {
+                        odds_calculator_strat = {b, f};
+                    }
+                    // average the 2 strategy and re-shuffle an action
+                    for (size_t i = 0; i < odds_calculator_strat.size(); i ++)
+                    {
+                        strat[i] += odds_calculator_strat[i];
+                        strat[i] /= 2;
+                    }
+                    if (DEBUG) 
+                    {
+                        debug_print("%s\n", "Final_strat:");
+                        UTILS::print_vec<float>(strat, std::cout);
+                    }
+                    action = get_action_based_on_strat(strat);
+                }
             }
             else
             {
                 std::cout << "Infoset_key not found in map\n";
                 debug_print("%s\n", "infoset_key not found in map");
+                // debug_print("decoded_infoset_key=%s\n", decode_infoset(infoset).c_str());
+                // std::cout << "decoded_infoset_key=" << decode_infoset(infoset) << "\n";
                 float b=0, c=0, f=0;
-                trainer->odds_calculator(this->private_cards, this->community_cards, this->deck, 50000, allow_check, b, c, f);
+                trainer->odds_calculator(this->m_eval, this->private_cards, this->community_cards, this->deck, 50000, allow_check, b, c, f);
                 std::vector<float> strat;
                 if (allow_check)
                 {
@@ -215,6 +291,11 @@ Action Player::get_action(bool allow_check) const
                 else
                 {
                     strat = {b, f};
+                }
+                if (DEBUG) 
+                {
+                    debug_print("%s\n", "odds_calculator_strat:");
+                    UTILS::print_vec<float>(strat, std::cout);
                 }
                 action = get_action_based_on_strat(strat);
             }
@@ -237,6 +318,113 @@ Action Player::get_action(bool allow_check) const
     // assert(action != Action::INVALID);
     debug_print(GREEN "%s\n" RESET, action_to_str.at(action).c_str());
     return action;
+}
+
+
+std::vector<float> Player::get_strategy(const Hand& private_hand, const Hand& community_cards, const std::string& action_history, bool allow_check)
+{
+    std::cout << "\nget strategy:\n";
+    std::cout << "private hand=\n";
+    UTILS::display_hand(private_hand);
+    std::cout << "community_cards=\n";
+    UTILS::display_hand(community_cards);
+    std::cout << "action_history=" << action_history;
+    std::cout << " check is allowed=" << allow_check << "\n";
+
+    assert(this->is_cfr_bot);
+    auto c_cards = community_cards;
+    if (!c_cards.empty())
+    {
+        assert(c_cards.size() >= 3);
+        // if we want to ignore suits and map strategy to 52 cards deck, perform the translation here
+        if (USE_STRAT_MAPPING)
+        {
+            for (auto & card : c_cards)
+            {
+                // add 1 because the trained strategy we currently have are based on {1, 5, 9, ...}
+                card = ((card >> 2) << 2) + 1;
+            }
+        }
+        std::sort(c_cards.begin(), c_cards.begin() + 3);
+    }
+    auto p_cards = private_hand;
+    assert(p_cards.size() == 2);
+    if (USE_STRAT_MAPPING)
+    {
+        for (auto & card : p_cards)
+        {
+            card = ((card >> 2) << 2) + 1;
+        }
+    }
+    std::sort(p_cards.begin(), p_cards.end());
+
+    // convert action history
+    std::vector<Action> infoset_action_history;
+    for (size_t i = 0; i < action_history.length(); i ++)
+    {
+        if (action_history.at(i) == 'B')
+            infoset_action_history.push_back(Action::BET);
+        else if (action_history.at(i) == 'C')
+            infoset_action_history.push_back(Action::CHECK);
+        else
+            assert(false && "action_history contains character other than B and C");
+    }
+    Infoset infoset = encode_infoset(p_cards, c_cards, infoset_action_history);
+    assert(this->trainer != nullptr);
+
+    bool is_flush = false;
+    if (USE_STRAT_MAPPING && !c_cards.empty())
+    {
+        omp::Hand h = omp::Hand::empty();
+        for (const auto & card : private_hand)
+        {
+            h += omp::Hand(card);
+        }
+        for (const auto & card : community_cards)
+        {
+            h += omp::Hand(card);
+        }
+        uint16_t score = m_eval.evaluate(h);
+        if (UTILS::hand_ranking.at(score / 4096) == "Flush")
+        {
+            is_flush = true;
+            debug_print("%s\n", "original cards form a flush");
+        }
+    }
+
+    if (!is_flush && trainer->infoset_map.find(infoset) != trainer->infoset_map.end())
+    {
+        debug_print("%s", "Found infoset_key\n");        
+        std::vector<float> strat = trainer->infoset_map.at(infoset).sigma;
+        assert(strat.size() == 2 || strat.size() == 3);
+        if (DEBUG) 
+        {
+            debug_print("%s\n", "CFR_strat:");
+            UTILS::print_vec<float>(strat, std::cout);
+        }
+        return strat;
+    }
+    else
+    {
+        debug_print("%s\n", "infoset_key not found in map");
+        float b=0, c=0, f=0;
+        trainer->odds_calculator(this->m_eval, private_hand, community_cards, this->deck, 50000, allow_check, b, c, f);
+        std::vector<float> strat;
+        if (allow_check)
+        {
+            strat = {b, f, c};
+        }
+        else
+        {
+            strat = {b, f};
+        }
+        if (DEBUG) 
+        {
+            debug_print("%s\n", "odds_calculator_strat:");
+            UTILS::print_vec<float>(strat, std::cout);
+        }
+        return strat;
+    }
 }
 
 
