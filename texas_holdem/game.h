@@ -6,15 +6,26 @@
 // // Forward declaration to avoid circular dependency
 class Game_state;
 
+const static std::vector<std::vector<std::string> > all_possible_action_history = 
+{
+    // Preflop
+    {"", "B"},
+    // Flop
+    {"BB","BBC","BBB","BBCB"},
+    // Turn
+    {"BBCC","BBCCC","BBCCB","BBCCCB","BBBB","BBBBC","BBBBB","BBBBCB","BBCBB","BBCBBC","BBCBBB","BBCBBCB"},
+    // River
+    {"BBCCCC","BBCCCCC","BBCCCCB","BBCCCCCB","BBCCBB","BBCCBBC","BBCCBBB","BBCCBBCB","BBCCCBB","BBCCCBBC","BBCCCBBB","BBCCCBBCB","BBBBCC","BBBBCCC","BBBBCCB","BBBBCCCB","BBBBBB","BBBBBBC","BBBBBBB","BBBBBBCB","BBBBCBB","BBBBCBBC","BBBBCBBB","BBBBCBBCB","BBCBBCC","BBCBBCCC","BBCBBCCB","BBCBBCCCB","BBCBBBB","BBCBBBBC","BBCBBBBB","BBCBBBBCB","BBCBBCBB","BBCBBCBBC","BBCBBCBBB","BBCBBCBBCB"}
+};
+
 class Game
 {
 public:
-
     std::vector<Player> m_players;
 
     std::vector<int> winning_records {0, 0};
 
-    Game ();
+    Game (Hand deck);
 
     inline Game_state* get_current_state() const {return m_state;}
 
@@ -48,6 +59,8 @@ public:
 
     void display_round_result() const;
 
+    void output_strategy_as_json(int num_games, std::string file_name="strategy.json");
+
 private:
     Game_state* m_state;
 
@@ -65,6 +78,8 @@ private:
     omp::HandEvaluator m_eval;
 
     Hand m_cards;
+
+    Hand m_playing_deck;
 
     Hand m_community_cards;
 
