@@ -10,7 +10,7 @@
 #include <stdexcept>
 #include <C:\boost\include\boost-1_77\boost\format.hpp>
 
-#define DEBUG 1
+#define DEBUG 0
 
 #define RESET "\033[0m"
 #define BLACK "\033[30m"     /* Black */
@@ -35,10 +35,11 @@ const std::string s[] =
         // rank here
         u8"└─────────┘"};
 
-// const static std::unordered_map<unsigned, std::string> suits ( { {0, "Spade"}, {1, "Heart"}, {2, "club"}, {3, "Diamond"} } );
-const static std::unordered_map<unsigned, std::string> suits({{0, u8"♠"}, {1, u8"♥"}, {2, u8"♣"}, {3, u8"♦"}});
+const static std::unordered_map<unsigned, std::string> suits ( { {0, "Spade"}, {1, "Heart"}, {2, "club"}, {3, "Diamond"} } );
+// const static std::unordered_map<unsigned, std::string> suits({{0, u8"♠"}, {1, u8"♥"}, {2, u8"♣"}, {3, u8"♦"}});
 const static std::unordered_map<unsigned, std::string> ranks({{1, "A "}, {2, "2 "}, {3, "3 "}, {4, "4 "}, {5, "5 "}, {6, "6 "}, {7, "7 "}, {8, "8 "}, {9, "9 "}, {10, "10"}, {11, "J "}, {12, "Q "}, {13, "K "}});
 // const static std::unordered_map<std::string, unsigned> suits_idx ( { {"spade", 0}, {"heart", 1}, {"club", 2}, {"diamond", 3} } );
+
 
 /*
 enum class Action : std::int16_t
@@ -105,6 +106,8 @@ const static std::unordered_map<Action, std::string> action_to_str({{Action::BET
 
 namespace UTILS
 {
+    static const std::unordered_map<unsigned, std::string> hand_ranking({{1, "High card"}, {2, "Pair"}, {3, "Two pair"}, {4, "Three of a kind"}, {5, "Straight"}, {6, "Flush"}, {7, "Full house"}, {8, "Four of a kind"}, {9, "Straight flush"}});
+
     static const std::set<std::pair<int, int>> any_position{
         std::make_pair(1, 1),
         std::make_pair(13, 13),
@@ -277,8 +280,8 @@ namespace UTILS
             rank -= 13;
         }
         std::string suit = suits.at(card % 4);
-        s << "rank=" << rank << " ,suit=" << boost::format("%1%") % suit;
-        // s << suit << " " << rank;
+        // s << "rank=" << rank << " ,suit=" << boost::format("%1%") % suit;
+        s << suit << " " << rank;
     }
 
 
@@ -367,57 +370,68 @@ namespace UTILS
         std::cout << s[5] << "\n";
     }
 
+    // __attribute__((unused))
+    // static void display_hand(Hand hand)
+    // {
+    //     unsigned size = hand.size();
+    //     for (unsigned i = 0; i < size; i++)
+    //         std::cout << s[0] << " ";
+    //     std::cout << "\n";
+    //     for (const auto &card : hand)
+    //     {
+    //         unsigned rank = card / 4 + 2;
+    //         if (rank > 13)
+    //         {
+    //             rank -= 13;
+    //         }
+    //         std::string r = ranks.at(rank);
+    //         std::cout << boost::format("│%1%       │ ") % r;
+    //     }
+    //     std::cout << "\n";
+    //     for (unsigned i = 0; i < size; i++)
+    //         std::cout << s[1] << " ";
+    //     std::cout << "\n";
+    //     for (unsigned i = 0; i < size; i++)
+    //         std::cout << s[2] << " ";
+    //     std::cout << "\n";
+
+    //     for (const auto &card : hand)
+    //     {
+    //         std::string suit = suits.at(card % 4);
+    //         std::cout << boost::format("│    %1%    │ ") % suit;
+    //     }
+    //     std::cout << "\n";
+    //     for (unsigned i = 0; i < size; i++)
+    //         std::cout << s[3] << " ";
+    //     std::cout << "\n";
+    //     for (unsigned i = 0; i < size; i++)
+    //         std::cout << s[4] << " ";
+    //     std::cout << "\n";
+
+    //     for (const auto &card : hand)
+    //     {
+    //         unsigned rank = card / 4 + 2;
+    //         if (rank > 13)
+    //         {
+    //             rank -= 13;
+    //         }
+    //         std::string r = ranks.at(rank);
+    //         std::cout << boost::format("│       %1%│ ") % r;
+    //     }
+    //     std::cout << "\n";
+    //     for (unsigned i = 0; i < size; i++)
+    //         std::cout << s[5] << " ";
+    //     std::cout << "\n";
+    // }
+
     __attribute__((unused))
     static void display_hand(Hand hand)
     {
-        unsigned size = hand.size();
-        for (unsigned i = 0; i < size; i++)
-            std::cout << s[0] << " ";
-        std::cout << "\n";
-        for (const auto &card : hand)
+        for (Card c : hand)
         {
-            unsigned rank = card / 4 + 2;
-            if (rank > 13)
-            {
-                rank -= 13;
-            }
-            std::string r = ranks.at(rank);
-            std::cout << boost::format("│%1%       │ ") % r;
+            print_card(c, std::cout);
+            std::cout <<  ", ";
         }
-        std::cout << "\n";
-        for (unsigned i = 0; i < size; i++)
-            std::cout << s[1] << " ";
-        std::cout << "\n";
-        for (unsigned i = 0; i < size; i++)
-            std::cout << s[2] << " ";
-        std::cout << "\n";
-
-        for (const auto &card : hand)
-        {
-            std::string suit = suits.at(card % 4);
-            std::cout << boost::format("│    %1%    │ ") % suit;
-        }
-        std::cout << "\n";
-        for (unsigned i = 0; i < size; i++)
-            std::cout << s[3] << " ";
-        std::cout << "\n";
-        for (unsigned i = 0; i < size; i++)
-            std::cout << s[4] << " ";
-        std::cout << "\n";
-
-        for (const auto &card : hand)
-        {
-            unsigned rank = card / 4 + 2;
-            if (rank > 13)
-            {
-                rank -= 13;
-            }
-            std::string r = ranks.at(rank);
-            std::cout << boost::format("│       %1%│ ") % r;
-        }
-        std::cout << "\n";
-        for (unsigned i = 0; i < size; i++)
-            std::cout << s[5] << " ";
         std::cout << "\n";
     }
 }
