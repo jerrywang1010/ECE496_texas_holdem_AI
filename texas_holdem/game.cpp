@@ -4,11 +4,14 @@
 #include <algorithm>
 #include <time.h>
 #include <chrono>
+#include <fstream>
+#include <C:\boost\include\boost-1_77\boost\range\irange.hpp>
+#include <C:\boost\include\boost-1_77\boost\range\algorithm_ext\push_back.hpp>
 
-const static std::unordered_map<unsigned, std::string> hand_ranking({{1, "High card"}, {2, "Pair"}, {3, "Two pair"}, {4, "Three of a kind"}, {5, "Straight"}, {6, "Flush"}, {7, "Full house"}, {8, "Four of a kind"}, {9, "Straight flush"}});
 
-Game::Game()
+Game::Game(Hand deck)
 {
+    m_playing_deck = std::move(deck);
     m_state = &Pre_flop::get_instance();
     // m_players = {Player("CFR_bot", 10), Player("Me", 10)};
     m_loss_player_idx = -1;
@@ -199,7 +202,7 @@ uint16_t Game::get_hand_ranking(Hand hand) const
         h += omp::Hand(card);
     }
     uint16_t score = m_eval.evaluate(h);
-    debug_print(MAGENTA "Hand ranking=%s\n" RESET, hand_ranking.at(score / 4096).c_str());
+    debug_print(MAGENTA "Hand ranking=%s\n" RESET, UTILS::hand_ranking.at(score / 4096).c_str());
     return score;
 }
 
@@ -225,12 +228,18 @@ void Game::shuffle_and_deal()
     //         m_cards.push_back(random);
     //     }
     // }
-    // Hand deck = {1,5,9,13,17,21,25,29,33,37};
-    Hand deck = {1,5,9,13,17,21,25,29,33,37,41,45,49};
+    // Hand deck = {1,5,9,13,17,21,25,29,33};
+    // Hand deck = {1,5,9,13,17,21,25,29,33,37,41,45,49};
+
+    // play on 52 cards deck
+    Hand deck = this->m_playing_deck;
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::default_random_engine generator(seed);
     std::shuffle(std::begin(deck), std::end(deck), generator);
     m_cards = deck;
+    // std::cout << "deck:\n";
+    // deck = Hand(deck.begin(), deck.begin() + 9);
+    // UTILS::display_hand(deck);
 }
 
 // assume only 2 players
@@ -260,6 +269,164 @@ void Game::display_round_result() const
             | _|      |_______/__/     \__\  |__|     |_______|| _| `._____|    \___/         \__/  \__/     |__| |__| \__| |_______/    
         )");
     }
+}
+
+
+int get_active_player_based_on_action_history(std::string action_history, bool& allow_check)
+{
+    // round terminating condition
+    // BB, CC, CBC
+    if (action_history.length() == 0)
+    {
+        allow_check = false;
+        return 0;
+    } 
+    if (action_history.length() == 1) 
+    {
+        allow_check = false;
+        return 1;
+    }
+
+    while (action_history.length() >= 3)
+    {
+        if (action_history.substr(0, 2) == "BB")
+        {
+            action_history = action_history.substr(2, std::string::npos);
+            continue;
+        }
+        else if (action_history.substr(0, 2) == "CC")
+        {
+            action_history = action_history.substr(2, std::string::npos);
+            continue;
+        }
+        else if (action_history.substr(0, 3) == "CBB")
+        {
+            action_history = action_history.substr(3, std::string::npos);
+            continue;
+        }
+    }
+
+    // possible action_history = {}, "B", "C", "BB", "CC", "CB"
+    assert(action_history.length() <= 2);
+    if (action_history.length() == 0 || action_history.length() == 2)
+    {
+        if (action_history.find("B") != std::string::npos)
+            allow_check = false;
+        else
+            allow_check = true;
+        return 0;
+    } 
+    if (action_history.length() == 1) 
+    {
+        if (action_history.find("B") != std::string::npos)
+            allow_check = false;
+        else
+            allow_check = true;
+        return 1;
+    }
+    assert(false && "what is going on?\n");
+    return 0;
+}
+
+template<typename T, typename A>
+void write_vector_to_file(const std::vector<T, A>& v, std::ofstream& out)
+{
+    if (v.size() == 0)
+    {
+        out << "\"null\"";
+        return;
+    }
+    out << "[";
+    for (size_t i = 0; i < v.size() - 1; i ++)
+    {
+        out << v[i] << ", ";
+    }
+    out << v.back() << "]";
+}
+
+
+void Game::output_strategy_as_json(int num_games, std::string file_name)
+{
+    // number of decision points in a game of Texas Hold'em
+    assert(all_possible_action_history.size() == 4);
+    assert(this->m_players.size() == 1);
+
+    std::ofstream json_file;
+    json_file.open(file_name, std::ios::out);
+    json_file << "{\n\t\"strategies\": [\n";
+    for (int iter = 0; iter < num_games; iter ++)
+    {
+        
+        shuffle_and_deal();
+        Hand deck = Hand(this->m_cards.begin(), this->m_cards.begin() + 9);
+        Hand P0_private_hand = Hand(this->m_cards.begin(), this->m_cards.begin() + 2);
+        std::sort(P0_private_hand.begin(), P0_private_hand.end());
+        Hand P1_private_hand = Hand(this->m_cards.begin() + 2, this->m_cards.begin() + 4);
+        std::sort(P1_private_hand.begin(), P1_private_hand.end());
+
+        std::cout << "P0_private_hand=";
+        UTILS::display_hand(P0_private_hand);
+        std::cout << "P1_private_hand=";
+        UTILS::display_hand(P1_private_hand);
+
+        Hand private_hand;
+        Hand community_cards;
+        for (int round_idx = 0; round_idx < 4; round_idx ++)
+        {
+            std::vector<std::string> action_history_in_round = all_possible_action_history[round_idx];
+            // flop
+            if (round_idx == 1)
+            {
+                community_cards = Hand(this->m_cards.begin() + 4, this->m_cards.begin() + 7);
+                std::sort(community_cards.begin(), community_cards.end());
+            }
+            // turn
+            else if (round_idx == 2)
+            {
+                community_cards = Hand(this->m_cards.begin() + 4, this->m_cards.begin() + 7);
+                std::sort(community_cards.begin(), community_cards.end());
+                community_cards.push_back(*(this->m_cards.begin() + 8));
+            }
+            // river
+            else if (round_idx == 3)
+            {
+                community_cards = Hand(this->m_cards.begin() + 4, this->m_cards.begin() + 7);
+                std::sort(community_cards.begin(), community_cards.end());
+                community_cards.insert(community_cards.end(), this->m_cards.begin() + 8, this->m_cards.begin() + 10);
+            }
+            
+            std::cout << "community_cards=";
+            UTILS::display_hand(community_cards);
+
+            for (size_t i = 0; i < action_history_in_round.size(); i ++)
+            {
+                std::string action_history = action_history_in_round[i];
+                bool allow_check = false;
+                int active_player_idx = get_active_player_based_on_action_history(action_history, allow_check);
+                private_hand = active_player_idx == 0 ?  P0_private_hand : P1_private_hand;
+                std::vector<float> strat = this->m_players[0].get_strategy(private_hand, community_cards, action_history, allow_check);
+
+                json_file << "{\n";
+                json_file << "\t\"deck\": ";
+                write_vector_to_file<Card>(deck, json_file);
+                json_file << ",\n";
+                json_file << "\t\"private_hand\": ";
+                write_vector_to_file<Card>(private_hand, json_file);
+                json_file << ",\n";
+                json_file << "\t\"community_cards\": ";
+                write_vector_to_file<Card>(community_cards, json_file);
+                json_file << ",\n";
+                json_file << "\t\"action_history\": " << (action_history.empty() ? "\"null\"" : "\"" + action_history + "\"") << ",\n";
+                json_file << "\t\"active_player_idx\": " << active_player_idx << ",\n";
+                json_file << "\t\"strategy\": ";
+                write_vector_to_file<float>(strat, json_file);
+                json_file << "\n";
+                json_file << "},\n";
+            }
+        }
+    }
+    json_file << "]\n}";
+    json_file.close();
 }
 
 
