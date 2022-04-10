@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <cstdio>
 #include <fstream>
+#include <ios>
 // #include "game_rule.h"
 #include "game.h"
 #include "gametree.h"
@@ -49,7 +50,7 @@ after game tree modification & infoset encoding:
 
 void save_map(const InfosetMap& m, const std::string& file="map.bin")
 {
-    std::ofstream filestream(file);
+    std::ofstream filestream(file, std::ios::binary);
     boost::archive::binary_oarchive archive(filestream, boost::archive::no_codecvt);
     archive << m;
 }
@@ -57,9 +58,8 @@ void save_map(const InfosetMap& m, const std::string& file="map.bin")
 
 void load_map(InfosetMap* m_ptr, const std::string& file="map.bin")
 {
-    std::ifstream filestream(file);
+    std::ifstream filestream(file, std::ios::binary);
     boost::archive::binary_iarchive archive(filestream, boost::archive::no_codecvt);
-
     archive >> *m_ptr;
 }
 
@@ -70,7 +70,6 @@ int main()
     SetConsoleOutputCP(CP_UTF8);
 
     /*
-    // boost::unordered_map<int, std::vector<float>> m;
     InfosetMap m;
     Infoset i1, i2;
     // fold
@@ -108,6 +107,7 @@ int main()
     std::cout << "map is cleared, size=" << m.size() << "\n";
     load_map(&m);
     std::cout << "map is loaded, size=" << m.size() << "\n";
+    m.clear();
     for (const auto & kv : m)
     {
         std::string key = decode_infoset(kv.first);
@@ -118,7 +118,6 @@ int main()
         std::cout << "cumulative_cfr_regret=";
         UTILS::print_vec<float>(kv.second.cumulative_cfr_regret, std::cout);
     }
-
     */
 
     // Ace to King
@@ -128,23 +127,98 @@ int main()
     // Hand training_deck = {1,5,9,13,17,21,25,29,33};
     // Hand training_deck = {10,2,3,40,5,6,27,38,9};
     // Hand training_deck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-    std::clock_t t_start = std::clock();
-    UTILS::display_hand(training_deck);
+    // UTILS::display_hand(training_deck);
 
     GameTree tree;
-    tree.build_tree(training_deck);
-    std::clock_t t_end = std::clock();
+    CFR_Trainer trainer;
 
-    std::cout << "Build tree took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
 
-    t_start = std::clock();
-    CFR_Trainer trainer(tree);
+    // write strategy to json file
+    {
+        Hand playing_deck;
+        boost::push_back(playing_deck, boost::irange(0, 52));
+        trainer.infoset_map.clear();
+        std::cout << "infoset map is cleared\n";
+        load_map(&trainer.infoset_map, "13_cards_p0_200_iter_strat.bin");
+        Game game(playing_deck);
+        game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10000)};
+        game.output_strategy_as_json(10, "test.json");
+    }
 
-    trainer.train(0);
-    trainer.compute_nash_eq();
-    t_end = std::clock();
-    std::cout << "CFR Trainer took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
+    /*
+    {
+        Hand playing_deck;
+        // playing_deck = training_deck;
+        boost::push_back(playing_deck, boost::irange(0, 52));
+        trainer.infoset_map.clear();
+        std::cout << "infoset map is cleared\n";
+        load_map(&trainer.infoset_map, "13_cards_p0_200_iter_strat.bin");
 
+        Game game(playing_deck);
+        fixed_strat fs = {{0.5f, 0.5f}, {1/3.0, 1/3.0, 1/3.0}};
+        // fixed_strat fs = {{0.9f, 0.1f}, {0.8f, 0.1f, 0.1f}};
+        game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10000), Player(fs, "Random_bot", 10000)};
+        // game.m_players = {Player(&trainer, playing_deck, "CFR_bot_1", 10000), Player(&trainer, playing_deck, "CFR_bot_2", 10000)};
+        int games_num = 10000;
+        game.run(games_num);
+        std::cout << "Player 0 winning rate: " << game.winning_records[0] / (double)games_num << std::endl;
+        std::cout << "Player 1 winning rate: " << game.winning_records[1] / (double)games_num << std::endl;
+
+        Game new_game(playing_deck);
+        new_game.m_players = {Player(fs, "Random_bot", 10000), Player(&trainer, playing_deck, "CFR_bot", 10000)};
+        new_game.run(games_num);
+        std::cout << "Player 0 winning rate: " << new_game.winning_records[0] / (double)games_num << std::endl;
+        std::cout << "Player 1 winning rate: " << new_game.winning_records[1] / (double)games_num << std::endl;
+    }
+    */
+
+    /*
+    tree.init_all_combo_first_round(training_deck, false);
+    int game_tree_first_level_partition = 10;
+    size_t total_combo_size = tree.all_combo_first_round.size();
+    size_t interval = total_combo_size / game_tree_first_level_partition;
+    
+    for (size_t i = 0; i * interval < total_combo_size; i ++)
+    {
+        // build subtree
+        std::clock_t t_start = std::clock();
+        tree.build_tree(training_deck, i * interval, interval);
+        int start = i * interval;
+        int end = std::min((i + 1) * interval, total_combo_size);
+        std::cout << "start_idx=" << start << ", end_idx=" << end << "\n";
+        std::clock_t t_end = std::clock();
+        std::cout << "Build " << i << "th/" << game_tree_first_level_partition <<  " tree took CPU time: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
+        t_start = std::clock();
+
+        // train on subtree
+        // first replace with the new subtree
+        trainer.tree = &tree;
+        trainer.trainer_init();
+        trainer.train(200);
+        trainer.compute_nash_eq();
+        t_end = std::clock();
+        std::cout << "CFR Trainer took CPU time on " << i << "th/" << game_tree_first_level_partition << " tree: " << (t_end - t_start) / CLOCKS_PER_SEC << " s\n";
+
+        // system dependent code for memory profiling
+        DWORDLONG virtual_mem_size_before_free, virtual_mem_size_after_free;
+        //get the handle to this process
+        auto myHandle = GetCurrentProcess();
+        //to fill in the process' memory usage details
+        PROCESS_MEMORY_COUNTERS pmc;
+        //return the usage (bytes), if I may
+        if (GetProcessMemoryInfo(myHandle, &pmc, sizeof(pmc)))
+            virtual_mem_size_before_free = pmc.WorkingSetSize;
+        else
+            virtual_mem_size_before_free = 0;
+        // free subtree
+        tree.free_tree_nodes();
+        if (GetProcessMemoryInfo(myHandle, &pmc, sizeof(pmc)))
+            virtual_mem_size_after_free = pmc.WorkingSetSize;
+        else
+            virtual_mem_size_after_free = 0;
+
+        std::cout << "freed memory size=" << virtual_mem_size_before_free - virtual_mem_size_after_free << std::endl;
+    }
 
     // system dependent code for memory profiling
     DWORDLONG virtual_mem_size;
@@ -159,28 +233,31 @@ int main()
         virtual_mem_size = 0;
 
     // printf("total virtual memory used by constructing the tree=%lld\n", totalVirtualMem);
-    std::cout << "total virtual memory used by constructing the tree=" << virtual_mem_size << std::endl;
-    //
+    std::cout << "total virtual memory used by storing strategy=" << virtual_mem_size << std::endl;
+    {
+        save_map(trainer.infoset_map, "13_cards_p0_200_iter_strat.bin");
+        // Hand playing_deck;
+        // boost::push_back(playing_deck, boost::irange(0, 52));
+        Hand playing_deck = training_deck;
+        Game game(playing_deck);
 
-    Hand playing_deck;
-    boost::push_back(playing_deck, boost::irange(0, 52));
-    Game game(playing_deck);
+        // fixed_strat<0> = strat[bet, fold] (when check is not allowed)
+        // fixed_strat<1> = strat[bet, fold, check] (when check is allowed)
+        // fixed_strat fs = {{0.9f, 0.1f}, {0.8f, 0.1f, 0.1f}};
+        // game.m_players = {Player(&trainer, deck, "CFR_bot", 10000), Player(fs, "Aggressive_bot", 10000)};
 
-    // fixed_strat<0> = strat[bet, fold] (when check is not allowed)
-    // fixed_strat<1> = strat[bet, fold, check] (when check is allowed)
-    // fixed_strat fs = {{0.9f, 0.1f}, {0.8f, 0.1f, 0.1f}};
-    // game.m_players = {Player(&trainer, deck, "CFR_bot", 10000), Player(fs, "Aggressive_bot", 10000)};
+        fixed_strat fs = {{0.5f, 0.5f}, {1/3.0, 1/3.0, 1/3.0}};
+        // fixed_strat fs = {{0.9f, 0.1f}, {0.8f, 0.1f, 0.1f}};
+        game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10000), Player(fs, "Random_bot", 10000)};
+        // game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10), Player("Me", 10)};
+        // game.m_players = {Player(fs, "Random_bot", 10000), Player(&trainer, playing_deck, "CFR_bot", 10000)};
+        int games_num = 100000;
+        game.run(games_num);
+        std::cout << "Player 0 winning rate: " << game.winning_records[0] / (double)games_num << std::endl;
+        std::cout << "Player 1 winning rate: " << game.winning_records[1] / (double)games_num << std::endl;
+    }
+    */
 
-    fixed_strat fs = {{0.5f, 0.5f}, {1/3.0, 1/3.0, 1/3.0}};
-
-    // game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10000), Player(fs, "Random_bot", 10000)};
-    game.m_players = {Player(&trainer, playing_deck, "CFR_bot", 10), Player("Me", 10)};
-    // game.m_players = {Player(fs, "Random_bot", 10000), Player(&trainer, playing_deck, "CFR_bot", 10000)};
-    int games_num = 10000;
-    game.run(games_num);
-    std::cout << "Player 0 winning rate: " << game.winning_records[0] / (double)games_num << std::endl;
-    std::cout << "Player 1 winning rate: " << game.winning_records[1] / (double)games_num << std::endl;
-    
     /*
     // Infoset i1 = {0x3, 0, 69};
     // Infoset i1 = {1023, 4282013, 69};
@@ -244,10 +321,6 @@ int main()
     // tree.print_tree(output);
     // // tree.print_tree();
     // output.close();
-
-    // Card card = 1;
-    // UTILS::display_card(card);
-    // UTILS::print_card(card);
 
     // Enable buffering to prevent VS from chopping up UTF-8 byte sequences
     // setvbuf(stdout, nullptr, _IOFBF, 1000);
